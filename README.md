@@ -9,7 +9,8 @@ It seems that the `react-native` developers have decided to leave those componen
 
 # Usage
 
-![screenshot](https://raw.githubusercontent.com/mmomtchev/react-native-settings-screen/main/screenshot.png)
+[Live Demo](https://mmomtchev.github.io/react-native-settings-screen/)
+
 
 ```tsx
 import React from 'react';
@@ -115,3 +116,6 @@ export default function Settings() {
     );
 }
 ```
+
+
+![screenshot](https://raw.githubusercontent.com/mmomtchev/react-native-settings-screen/main/screenshot.png)

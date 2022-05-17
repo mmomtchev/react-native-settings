@@ -7,6 +7,7 @@
   "scripts": {
     "build:lib": "tsc",
     "build:examples": "webpack --mode=production",
+    "publish:examples": "node publish-ghpages.cjs",
     "clean": "tsc --build --clean",
     "test": "test"
   },
@@ -38,6 +39,7 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-react-native-web": "^0.17.7",
     "expo-dev-menu": "^0.10.6",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

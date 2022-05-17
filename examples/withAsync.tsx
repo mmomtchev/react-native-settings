@@ -53,12 +53,17 @@ const settings: SettingsElement[] = [
             }
         ]
     },
+    // Independent enums
     {
-        label: 'Legs', type: 'enum', values: Object.keys(intelligence), display: (v: string) => pairs[v],
+        label: 'Intelligence', type: 'enum', values: Object.keys(intelligence), display: (v: string) => intelligence[v],
+        get: confGet.bind(null, '@int', 'M'), set: confSet.bind(null, '@int')
+    },
+    {
+        label: 'Legs', type: 'enum', values: Object.keys(pairs), display: (v: string) => pairs[v],
         get: confGet.bind(null, '@legs', '2'), set: confSet.bind(null, '@legs')
     },
     {
-        label: 'Arms', type: 'enum', values: Object.keys(intelligence), display: (v: string) => pairs[v],
+        label: 'Arms', type: 'enum', values: Object.keys(pairs), display: (v: string) => pairs[v],
         get: confGet.bind(null, '@arms', '2'), set: confSet.bind(null, '@arms')
     },
     {

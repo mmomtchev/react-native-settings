@@ -53,7 +53,7 @@ export default {
     ],
     output: {
         filename: 'bundle.web.js',
-        path: path.resolve(__dirname, 'doc')
+        path: path.resolve(__dirname, 'docs')
     },
     resolve: {
         extensions: ['.ts', '.tsx', 'web.js', '.js'],

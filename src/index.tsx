@@ -109,7 +109,7 @@ function reducer(state: unknown[], action: {
     readOnly?: boolean;
     context: SettingContextType;
 }): unknown[] {
-    console.log('dispatch', action);
+    console.debug('dispatch', action);
     if (action.item.type === 'section') throw new Error('Sections cannot be reduced');
     const newState = [...state];
     newState[action.idx] = action.value;
@@ -120,7 +120,7 @@ function reducer(state: unknown[], action: {
     const setResult = action.item.set(action.value as never);
     if (setResult === false) return state;
     if (setResult instanceof Promise) {
-        setImmediate(() => action.context.spinStart());
+        setTimeout(() => action.context.spinStart(), 0);
         setResult.then(() => action.context.spinStop());
     }
 
