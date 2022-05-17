@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "es6",
+        "target": "esnext",
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "outDir": ".",
+        "declaration": true,
+        "declarationMap": true,
+        "removeComments": true,
+        "jsx": "react",
+        "allowJs": true,
+        "baseUrl": "./",
+        "strict": true,
+        "paths": {
+            "react-native-settings-screen": [
+                "./src"
+            ]
+        }
+    },
+    "include": [
+        "./src", "./examples"
+    ],
+    "exclude": [
+        "*.js"
+    ],
+    "ts-node": {
+        "transpileOnly": true
+    }
+}

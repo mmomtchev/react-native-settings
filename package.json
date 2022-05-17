@@ -1,0 +1,51 @@
+{
+  "name": "react-native-settings-screen",
+  "version": "1.0.0",
+  "description": "React Native Universal Settings Screen",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "clean": "tsc --build --clean",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmomtchev/react-native-settings-screen.git"
+  },
+  "keywords": [
+    "React",
+    "react-native",
+    "settings",
+    "preferences"
+  ],
+  "author": "Momtchil Momtchev <momtchil@momtchev.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmomtchev/react-native-settings-screen/issues"
+  },
+  "homepage": "https://github.com/mmomtchev/react-native-settings-screen#readme",
+  "peerDependencies": {
+    "@react-navigation/native-stack": ">=6.6.0",
+    "@types/react": ">=18.0.9",
+    "react": ">=17.0.0",
+    "react-native": ">=0.68.0"
+  },
+  "devDependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.4",
+    "@types/react": "^18.0.9",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-react-native-web": "^0.17.7",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native-web": "^0.17.7",
+    "ts-loader": "^9.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.6.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
