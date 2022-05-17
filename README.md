@@ -9,6 +9,8 @@ It seems that the `react-native` developers have decided to leave those componen
 
 # Usage
 
+![screenshot](https://raw.githubusercontent.com/mmomtchev/react-native-settings-screen/main/screenshot.png)
+
 ```tsx
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
