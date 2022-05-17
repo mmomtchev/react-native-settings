@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -73,8 +74,10 @@ const settings: SettingsElement[] = [
 
 export default function Settings() {
     return (
-        <View style={styles.container}>
-            <ReactNativeSettings settings={settings} />
-        </View>
+        <NavigationContainer>
+            <View style={styles.container}>
+                <ReactNativeSettings settings={settings} />
+            </View>
+        </NavigationContainer>
     );
 }
