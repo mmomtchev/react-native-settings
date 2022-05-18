@@ -91,10 +91,6 @@ export default {
         alias: {
             'react-native-settings-screen$': path.resolve(__dirname, 'src'),
             'react-native$': 'react-native-web',
-            '../Utilities/Platform': 'react-native-web/dist/exports/Platform',
-            '../../Utilities/Platform': 'react-native-web/dist/exports/Platform',
-            './Platform': 'react-native-web/dist/exports/Platform',
-            './RCTAlertManager': 'react-native-web/dist/exports/Alert',
             'react-native-safe-area-context': 'expo-dev-menu/vendored/react-native-safe-area-context/src'
         }
     }
