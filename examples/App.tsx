@@ -37,7 +37,7 @@ const App = (): JSX.Element => {
     return (
         <Router>
             <h1 className='m-2'>
-                <strong>react-edit-list {pkgConfig.version} Examples</strong>
+                <strong>react-native-settings-screen {pkgConfig.version} Examples</strong>
             </h1>
             <div className='d-flex flex-row p-3'>
                 <div className='d-flex flex-column left-menu me-2'>
