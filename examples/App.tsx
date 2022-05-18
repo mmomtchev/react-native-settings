@@ -31,8 +31,6 @@ const LeftMenuItem = (props): JSX.Element => (
 );
 
 const App = (): JSX.Element => {
-    const [jsText, setJSText] = React.useState<string>('');
-
     return (
         <Router>
             <h1 className='m-2'>
