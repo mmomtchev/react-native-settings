@@ -4,10 +4,11 @@ import React from 'react';
 import { HashRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import './app.css';
+import phoneScreen from './phonescreen.svg';
 import pkgConfig from '../package.json';
 
 const examples = {
-    simple: {title: 'Simple', file: 'Simple'},
+    simple: { title: 'Simple', file: 'Simple' },
     advanced: { title: 'Async', file: 'withAsync' },
 };
 
@@ -66,10 +67,17 @@ const App = (): JSX.Element => {
                                             />
                                         </React.Suspense>
                                     </div>
-                                    <iframe
-                                        className='phone-screen'
-                                        src={`${examples[e].file}.html`}
-                                    />
+                                    <div className='position-relative ms-4 mt-4'>
+                                        <img
+                                            className='position-absolute'
+                                            style={{left: -5, top: -38, width: 400, height: 940, pointerEvents: 'none'}}
+                                            src={phoneScreen}
+                                        />
+                                        <iframe
+                                            className='phone-screen'
+                                            src={`${examples[e].file}.html`}
+                                        />
+                                    </div>
                                 </div>
                             )} />
                         ))}

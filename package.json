@@ -10,7 +10,7 @@
     "publish:examples": "node publish-ghpages.cjs",
     "clean": "tsc --build --clean",
     "eslint": "eslint src/*.ts* examples/*.ts*",
-    "test": "test"
+    "dev": "webpack-cli serve --mode=development --env development --open"
   },
   "repository": {
     "type": "git",
@@ -66,6 +66,7 @@
     "typescript": "^4.6.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   }
 }
