@@ -2,7 +2,7 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "es6",
+        "module": "ESNext",
         "target": "esnext",
         "lib": [
             "esnext",
@@ -29,10 +29,12 @@
         }
     },
     "include": [
-        "./src", "./examples"
+        "./src",
+        "./examples"
     ],
     "exclude": [
-        "*.js"
+        "*.js",
+        "*.cjs"
     ],
     "ts-node": {
         "transpileOnly": true

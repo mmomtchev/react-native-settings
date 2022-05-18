@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 async function confGet(key: string, def: string): Promise<string> {
     // I am slow
     await new Promise((resolve) => setTimeout(resolve, 500));
-    return AsyncStorage.getItem(key)
+    return await AsyncStorage.getItem(key)
         .then((v) => {
             if (v === null) throw new Error('value not found');
             return v;
@@ -40,6 +40,7 @@ function confSet(key: string, value: string): Promise<void> | boolean {
     // I am slow
     return new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
         AsyncStorage.setItem(key, value).catch((e) => {
+            // eslint-disable-next-line no-console
             console.error(e);
         })
     );
