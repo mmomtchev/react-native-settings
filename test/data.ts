@@ -1,6 +1,10 @@
-import {SettingsElement} from 'react-native-settings-screen';
+import {
+    SettingsElementBoolean,
+    SettingsElementEnum,
+    SettingsElementString
+} from 'react-native-settings-screen';
 
-const configData = {};
+let configData = {};
 
 const confGet = (key: string, def: string): string => configData[key] || def;
 
@@ -10,7 +14,7 @@ const confSet = (key: string, value: string): void => {
 
 const intelligence: Record<string, string> = {L: 'Low', M: 'Medium', H: 'High'};
 
-export const settings: SettingsElement[] = [
+export const settings: [SettingsElementString, SettingsElementEnum, SettingsElementBoolean] = [
     {
         label: 'Name',
         type: 'string',
@@ -29,7 +33,11 @@ export const settings: SettingsElement[] = [
     {
         label: 'Wings',
         type: 'boolean',
-        get: async () => (await confGet('@wings', 'false')) === 'true',
+        get: () => confGet('@wings', 'false') === 'true',
         set: (v) => confSet('@wings', v.toString())
     }
 ];
+
+export function reset() {
+    configData = {};
+}

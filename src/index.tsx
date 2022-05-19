@@ -208,6 +208,7 @@ function SettingsList(props: {
                                         ref={textInput}
                                         style={styles.item}
                                         value={inputText}
+                                        blurOnSubmit={true}
                                         keyboardType={
                                             element.type === 'number' ? 'numeric' : undefined
                                         }
