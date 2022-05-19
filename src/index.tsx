@@ -144,9 +144,11 @@ function reducer(
 
 type StackParamList = {
     ReactNativeSettingsMain: undefined;
-    ReactNativeSettingsEnum: {element: SettingsElementEnum; onChange: (v: string) => void};
+    ReactNativeSettingsEnum: {data: number};
 };
 const SettingsStack = createNativeStackNavigator<StackParamList>();
+
+const EnumValuesIPC: {element: SettingsElementEnum; onChange: (val: string) => void}[] = [];
 
 function SettingsList(props: {
     settings: SettingsElement[];
@@ -253,8 +255,11 @@ function SettingsList(props: {
                                 style={styles.item}
                                 onPress={() =>
                                     props.nav.navigation.navigate('ReactNativeSettingsEnum', {
-                                        element,
-                                        onChange
+                                        data:
+                                            EnumValuesIPC.push({
+                                                element,
+                                                onChange
+                                            }) - 1
                                     })
                                 }
                             >
@@ -310,14 +315,17 @@ export default function ReactNativeSettings(props: {settings: SettingsElement[]}
                         </SettingsStack.Screen>
                         <SettingsStack.Screen
                             name={'ReactNativeSettingsEnum'}
-                            options={({route}) => ({title: route.params.element.label})}
+                            options={({route}) => ({
+                                title: EnumValuesIPC[route.params.data].element.label
+                            })}
                         >
                             {(nav) => (
                                 <EnumValues
-                                    element={nav.route.params.element}
+                                    element={EnumValuesIPC[nav.route.params.data].element}
                                     onChange={(v: string) => {
-                                        nav.route.params.onChange(v);
+                                        EnumValuesIPC[nav.route.params.data].onChange(v);
                                         nav.navigation.navigate('ReactNativeSettingsMain');
+                                        EnumValuesIPC.splice(nav.route.params.data, 1);
                                     }}
                                 />
                             )}
