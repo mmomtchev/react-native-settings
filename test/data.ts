@@ -50,15 +50,13 @@ export const settingsAsync: [SettingsElementString, SettingsElementEnum, Setting
         get: () => wait().then(() => confGet('@name', '')),
         set: (v) => wait().then(() => confSet('@name', v))
     },
-    // This one will be slower than the other so that we can always use it as signal
-    // that the component has been initialized
     {
         label: 'Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],
-        get: () => wait(50).then(() => confGet('@int', 'M')),
-        set: (v) => wait(50).then(() => confSet('@int', v))
+        get: () => wait().then(() => confGet('@int', 'M')),
+        set: (v) => wait().then(() => confSet('@int', v))
     },
     {
         label: 'Wings',
