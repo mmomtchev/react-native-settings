@@ -3,8 +3,7 @@ const config = {
     testEnvironment: 'jsdom',
     roots: ['<rootDir>/test'],
     transform: {
-        '^.+\.tsx?$': 'ts-jest',
-        '^.+\.jsx?$': 'babel-jest'
+        '^.+\.[tj]sx?$': 'babel-jest'
     },
     transformIgnorePatterns: ['/node_modules/(?!(react-native|@react-native|@react-navigation))'],
     moduleNameMapper: {
