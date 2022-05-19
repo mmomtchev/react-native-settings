@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Switch, TextInput} from 'react-native';
-import {fireEvent, render, waitFor} from '@testing-library/react-native';
+import {act, fireEvent, render, waitFor} from '@testing-library/react-native';
 
 import Settings, * as REL from 'react-native-settings-screen';
 
@@ -22,12 +22,14 @@ describe('react-native-settings-screen', () => {
         const newSettings = [...settings];
         newSettings[1] = {...newSettings[1]};
         newSettings[1].label = 'Dexterity';
-        r.rerender(
-            <NavigationContainer>
-                <Settings settings={newSettings} />
-            </NavigationContainer>
+        await act(async () =>
+            r.rerender(
+                <NavigationContainer>
+                    <Settings settings={newSettings} />
+                </NavigationContainer>
+            )
         );
-        await waitFor(() => expect(r.getByText('Dexterity')));
+        expect(r.getByText('Dexterity'));
         expect(r.toJSON()).toMatchSnapshot();
         r.unmount();
     });
@@ -45,15 +47,14 @@ describe('react-native-settings-screen', () => {
         );
         await waitFor(() => expect(r.getByText('Intelligence')));
 
-        fireEvent.press(r.getByText('Name'));
-        await waitFor(() => expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(1));
+        await act(async () => fireEvent.press(r.getByText('Name')));
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(1);
         expect(r.toJSON()).toMatchSnapshot();
 
-        fireEvent.changeText(r.UNSAFE_queryAllByType(TextInput)[0], 'Vogon');
-        fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'submitEditing');
-        fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'blur');
-        await waitFor(() => expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(0));
-        await waitFor(() => expect(newSettings[0].set).toBeCalledWith('Vogon'));
+        await act(async () => fireEvent.changeText(r.UNSAFE_queryAllByType(TextInput)[0], 'Vogon'));
+        await act(async () => fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'submitEditing'));
+        await act(async () => fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'blur'));
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(0);
         expect(r.toJSON()).toMatchSnapshot();
 
         expect(newSettings[0].get).toHaveBeenCalledTimes(1);
@@ -75,12 +76,12 @@ describe('react-native-settings-screen', () => {
         );
         await waitFor(() => expect(r.getByText('Medium')));
 
-        fireEvent.press(r.getByText('Medium'));
-        await waitFor(() => expect(r.getByText('High')));
+        await act(async () => fireEvent.press(r.getByText('Medium')));
+        expect(r.getByText('High'));
         expect(r.toJSON()).toMatchSnapshot();
 
-        fireEvent.press(r.getByText('High'));
-        await waitFor(() => expect(r.getByText('Intelligence')));
+        await act(async () => fireEvent.press(r.getByText('High')));
+        expect(r.getByText('Intelligence'));
         expect(r.toJSON()).toMatchSnapshot();
 
         expect(newSettings[1].get).toHaveBeenCalledTimes(1);
@@ -103,8 +104,8 @@ describe('react-native-settings-screen', () => {
         await waitFor(() => expect(r.getByText('Wings')));
         expect(r.UNSAFE_queryAllByType(Switch)[0].props.value).toBe(false);
 
-        fireEvent.press(r.getByText('Wings'));
-        await waitFor(() => expect(r.UNSAFE_queryAllByType(Switch)[0].props.value).toBe(true));
+        await act(async () => fireEvent.press(r.getByText('Wings')));
+        expect(r.UNSAFE_queryAllByType(Switch)[0].props.value).toBe(true);
         expect(r.toJSON()).toMatchSnapshot();
 
         expect(newSettings[2].get).toHaveBeenCalledTimes(1);
