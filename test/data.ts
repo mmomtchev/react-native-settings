@@ -14,7 +14,7 @@ const confSet = (key: string, value: string): void => {
 
 const intelligence: Record<string, string> = {L: 'Low', M: 'Medium', H: 'High'};
 
-export const settings: [SettingsElementString, SettingsElementEnum, SettingsElementBoolean] = [
+export const settingsSync: [SettingsElementString, SettingsElementEnum, SettingsElementBoolean] = [
     {
         label: 'Name',
         type: 'string',
@@ -35,6 +35,39 @@ export const settings: [SettingsElementString, SettingsElementEnum, SettingsElem
         type: 'boolean',
         get: () => confGet('@wings', 'false') === 'true',
         set: (v) => confSet('@wings', v.toString())
+    }
+];
+
+function wait(ms?: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms || 25));
+}
+
+export const settingsAsync: [SettingsElementString, SettingsElementEnum, SettingsElementBoolean] = [
+    {
+        label: 'Name',
+        type: 'string',
+        display: (s) => (s && s.length ? s : 'empty'),
+        get: () => wait().then(() => confGet('@name', '')),
+        set: (v) => wait().then(() => confSet('@name', v))
+    },
+    // This one will be slower than the other so that we can always use it as signal
+    // that the component has been initialized
+    {
+        label: 'Intelligence',
+        type: 'enum',
+        values: Object.keys(intelligence),
+        display: (v: string) => intelligence[v],
+        get: () => wait(50).then(() => confGet('@int', 'M')),
+        set: (v) => wait(50).then(() => confSet('@int', v))
+    },
+    {
+        label: 'Wings',
+        type: 'boolean',
+        get: () =>
+            wait()
+                .then(() => confGet('@wings', 'false'))
+                .then((r) => r === 'true'),
+        set: (v) => wait().then(() => confSet('@wings', v.toString()))
     }
 ];
 
