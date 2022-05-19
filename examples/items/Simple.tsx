@@ -1,11 +1,11 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import {Dimensions, StyleSheet, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import { default as ReactNativeSettings, SettingsElement } from 'react-native-settings-screen';
+import {default as ReactNativeSettings, SettingsElement} from 'react-native-settings-screen';
 
 // We will store the config here
-const configData = {};
+const configData: Record<string, string> = {};
 
 const styles = StyleSheet.create({
     container: {
@@ -17,14 +17,15 @@ const styles = StyleSheet.create({
     }
 });
 
-
 // Retrieve a conf item or return the default
 const confGet = (key: string, def: string): string => configData[key] || def;
 
 // Store a conf item
-const confSet = (key: string, value: string): void => { configData[key] = value; };
+const confSet = (key: string, value: string): void => {
+    configData[key] = value;
+};
 
-const intelligence: Record<string, string> = { L: 'Low', M: 'Medium', H: 'High' };
+const intelligence: Record<string, string> = {L: 'Low', M: 'Medium', H: 'High'};
 
 // This is the configuration schema
 const settings: SettingsElement[] = [

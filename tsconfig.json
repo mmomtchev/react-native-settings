@@ -29,12 +29,11 @@
         }
     },
     "include": [
-        "./src",
-        "./examples"
+        "./src"
     ],
     "exclude": [
-        "*.js",
-        "*.cjs"
+        "**/*.js",
+        "**/*.cjs"
     ],
     "ts-node": {
         "transpileOnly": true

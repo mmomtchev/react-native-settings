@@ -1,7 +1,10 @@
 /node_modules
+/dist
+/docs
+/.ts-jest
+/coverage
+
 /index.js
 /index.js.map
 /index.d.ts
 /index.d.ts.map
-/dist
-/docs

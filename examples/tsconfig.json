@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es6",
+        "noEmit": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "paths": {
+            "react-native-settings-screen": [
+                "../src"
+            ]
+        }
+    },
+    "include": [
+        "./*.ts*",
+        "./items/*.ts*",
+        "./src/*.ts*"
+    ],
+    "ts-node": {
+        "transpileOnly": true
+    }
+}
