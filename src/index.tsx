@@ -293,6 +293,9 @@ function StringNumber(props: {
             if (textInput.current) textInput.current.blur();
             if (textListener.current) textListener.current.remove();
         });
+        return () => {
+            if (textListener.current) textListener.current.remove();
+        };
     }, [textInput]);
 
     const [inputText, setInputText] = React.useState<string>('');
