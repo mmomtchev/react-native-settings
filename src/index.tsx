@@ -15,7 +15,18 @@ import {
 } from 'react-native';
 import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 
+/**
+ * A configuration getter, may be synchronous or asynchronous.
+ *
+ * Asynchronous getters will trigger a spinning activity indicator.
+ */
 export type ReactNativeSettingsGetter<T> = () => T | Promise<T>;
+
+/**
+ * A configuration setter, may be synchronous or asynchronous.
+ *
+ * May synchronously return false to deny the operation.
+ */
 export type ReactNativeSettingsSetter<T> = (v: T) => boolean | void | Promise<void>;
 
 export interface SettingsElementString {
@@ -507,8 +518,23 @@ const activityStyle: Record<'true' | 'false', StyleProp<ViewStyle>> = {
     }
 };
 
+/**
+ * Configurable Settings Screen for React Native.
+ *
+ * Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
+ *
+ * @param props
+ * @returns
+ */
 export default function ReactNativeSettings(props: {
+    /**
+     * List of settings
+     */
     settings: SettingsElement[];
+
+    /**
+     * Optional styles overriding the default styles
+     */
     styles?: SettingsStyle;
 }) {
     const [spinning, setSpinning] = React.useState<number>(0);

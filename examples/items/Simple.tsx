@@ -45,7 +45,7 @@ const settings: SettingsElement[] = [
         get: confGet.bind(null, '@int', 'M'),
         set: confSet.bind(null, '@int')
     },
-    // Boolean switch grouped under a common header
+    // Boolean switch
     {
         label: 'Wings',
         type: 'boolean',
