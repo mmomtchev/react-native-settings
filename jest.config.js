@@ -7,7 +7,9 @@ const config = {
     },
     transformIgnorePatterns: ['/node_modules/(?!(react-native|@react-native|@react-navigation))'],
     moduleNameMapper: {
-        '^react-native-settings-screen$': '<rootDir>/src'
+        '^react-native-settings-screen$': '<rootDir>/src',
+        '^asap$': '<rootDir>/test/asap.js',
+        '^asap/raw$': '<rootDir>/test/asap.js'
     },
     globals: {
         'ts-jest': {
