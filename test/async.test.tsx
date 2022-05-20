@@ -1,17 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {ActivityIndicator, Switch, TextInput, View} from 'react-native';
-import {act, fireEvent, render, RenderAPI, waitFor} from '@testing-library/react-native';
+import {Switch, TextInput} from 'react-native';
+import {act, fireEvent, render, waitFor} from '@testing-library/react-native';
 
 import Settings from 'react-native-settings-screen';
 
-import {settingsAsync, reset} from './data';
-
-function waitForSpinner(r: RenderAPI): Promise<void> {
-    return waitFor(async () =>
-        expect(r.UNSAFE_queryAllByType(View)[1].props.pointerEvents).toBe('auto')
-    ).then(() => undefined);
-}
+import {settingsAsync, reset, waitForSpinner} from './data';
 
 describe('async', () => {
     beforeEach(reset);

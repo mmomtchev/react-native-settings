@@ -7,7 +7,11 @@ import {
     TouchableOpacity,
     TextInput,
     ActivityIndicator,
-    Keyboard
+    Keyboard,
+    StyleProp,
+    ViewStyle,
+    TextStyle,
+    EmitterSubscription
 } from 'react-native';
 import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 
@@ -20,6 +24,7 @@ export interface SettingsElementString {
     get: ReactNativeSettingsGetter<string>;
     set: ReactNativeSettingsSetter<string>;
     display?: (v: string) => string;
+    jsxLabel?: JSX.Element;
 }
 
 export interface SettingsElementNumber {
@@ -28,6 +33,7 @@ export interface SettingsElementNumber {
     get: ReactNativeSettingsGetter<number>;
     set: ReactNativeSettingsSetter<number>;
     display?: (v: number) => string;
+    jsxLabel?: JSX.Element;
 }
 
 export interface SettingsElementEnum {
@@ -37,6 +43,7 @@ export interface SettingsElementEnum {
     get: ReactNativeSettingsGetter<string>;
     set: ReactNativeSettingsSetter<string>;
     display?: (v: string) => string;
+    jsxLabel?: JSX.Element;
 }
 
 export interface SettingsElementBoolean {
@@ -44,12 +51,14 @@ export interface SettingsElementBoolean {
     type: 'boolean';
     get: ReactNativeSettingsGetter<boolean>;
     set: ReactNativeSettingsSetter<boolean>;
+    jsxLabel?: JSX.Element;
 }
 
 export type SettingsElementSection = {
     label: string;
     type: 'section';
     elements: SettingsElement[];
+    jsxLabel?: JSX.Element;
 };
 
 export type SettingsElement =
@@ -59,7 +68,18 @@ export type SettingsElement =
     | SettingsElementBoolean
     | SettingsElementSection;
 
-const styles = StyleSheet.create({
+export interface SettingsStyle {
+    screen?: StyleProp<ViewStyle>;
+    list?: StyleProp<ViewStyle>;
+    header?: StyleProp<ViewStyle>;
+    item?: StyleProp<ViewStyle>;
+    label?: StyleProp<TextStyle>;
+    value?: StyleProp<TextStyle>;
+    input?: StyleProp<TextStyle>;
+    spinner?: StyleProp<ViewStyle>;
+}
+
+const defaultStyles: SettingsStyle = StyleSheet.create({
     screen: {
         flex: 1,
         padding: 5
@@ -86,11 +106,14 @@ const styles = StyleSheet.create({
         paddingStart: 10,
         paddingEnd: 10
     },
+    input: {
+        fontFamily: 'sans-serif'
+    },
     label: {},
     value: {
         color: '#c8c7cc'
     },
-    loading: {
+    spinner: {
         position: 'absolute',
         left: 0,
         right: 0,
@@ -106,6 +129,8 @@ interface SettingContextType {
     spinStart: () => void;
     spinStop: () => void;
 }
+
+/* istanbul ignore next 5 */
 const SettingsContext = React.createContext<SettingContextType>({
     spinStart: () => undefined,
     spinStop: () => undefined
@@ -116,31 +141,33 @@ function then<T>(value: T | Promise<T>, fn: (value: T) => void): void {
     else fn(value);
 }
 
-function reducer(
-    state: unknown[],
+function reducer<T>(
+    state: T,
     action: {
-        idx: number;
         item: SettingsElement;
-        value: unknown;
-        readOnly?: boolean;
+        value: T;
+        initOnly?: boolean;
         context: SettingContextType;
     }
-): unknown[] {
+): T {
     if (action.item.type === 'section') throw new Error('Sections cannot be reduced');
-    const newState = [...state];
-    newState[action.idx] = action.value;
+    const newState = action.value;
 
-    if (action.readOnly) return newState;
+    if (action.initOnly) return newState;
 
     const setResult = action.item.set(action.value as never);
     if (setResult === false) return state;
     if (setResult instanceof Promise) {
+        // This is because of https://github.com/facebook/react-native/issues/33848
+        // (in an ideal world spinStart would have been synchronous)
         setTimeout(() => action.context.spinStart(), 0);
         setResult.then(() => action.context.spinStop());
     }
 
     return newState;
 }
+type reducerType<T> = typeof reducer;
+const reducerBool = reducer as reducerType<boolean>;
 
 type StackParamList = {
     ReactNativeSettingsMain: undefined;
@@ -150,145 +177,350 @@ const SettingsStack = createNativeStackNavigator<StackParamList>();
 
 const EnumValuesIPC: {element: SettingsElementEnum; onChange: (val: string) => void}[] = [];
 
+function Section(props: {
+    element: SettingsElementSection;
+    styles?: SettingsStyle;
+    nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
+}) {
+    const styleLabel = React.useMemo(
+        () => props.styles?.label ?? defaultStyles.label,
+        [props.styles?.label]
+    );
+    const styleHeader = React.useMemo(
+        () => props.styles?.header ?? defaultStyles.header,
+        [props.styles?.header]
+    );
+
+    const jsx = React.useMemo(
+        () =>
+            props.element.jsxLabel ?? (
+                <View style={styleHeader}>
+                    <Text style={styleLabel}>{props.element.label}</Text>
+                </View>
+            ),
+        [props.element.jsxLabel, styleLabel, styleHeader, props.element.label]
+    );
+
+    return (
+        <View>
+            {jsx}
+            <SettingsList nav={props.nav} settings={props.element.elements} styles={props.styles} />
+        </View>
+    );
+}
+
+function Boolean(props: {
+    element: SettingsElementBoolean;
+    styles?: SettingsStyle;
+    nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
+}) {
+    const context = React.useContext(SettingsContext);
+    const [value, dispatch] = React.useReducer(reducerBool, false);
+    React.useEffect(() => {
+        context.spinStart();
+        then(props.element.get(), (v) => {
+            dispatch({item: props.element, value: v, initOnly: true, context});
+            context.spinStop();
+        });
+    }, [props.element, dispatch, context]);
+
+    const onPress = React.useCallback(
+        () => dispatch({item: props.element, value: !value, context}),
+        [dispatch, props.element, value, context]
+    );
+
+    const styleItem = React.useMemo(
+        () => props.styles?.item ?? defaultStyles.item,
+        [props.styles?.item]
+    );
+    const styleLabel = React.useMemo(
+        () => props.styles?.label ?? defaultStyles.label,
+        [props.styles?.label]
+    );
+
+    const jsx = React.useMemo(
+        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
+        [props.element.jsxLabel, styleLabel, props.element.label]
+    );
+
+    return (
+        <TouchableOpacity onPress={onPress}>
+            <View style={styleItem}>
+                {jsx}
+                <View pointerEvents='none'>
+                    <Switch value={value as boolean} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+}
+
+function StringNumber(props: {
+    element: SettingsElementNumber | SettingsElementString;
+    styles?: SettingsStyle;
+    nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
+    editing: boolean;
+    setEditing: (v: boolean) => void;
+}) {
+    const context = React.useContext(SettingsContext);
+
+    const [value, dispatch] = React.useReducer(reducer, []);
+    React.useEffect(() => {
+        context.spinStart();
+        then(props.element.get(), (v) => {
+            dispatch({item: props.element, value: v, initOnly: true, context});
+            setInputText(v.toString());
+            context.spinStop();
+        });
+    }, [props.element, dispatch, context]);
+
+    const textInput = React.useRef<TextInput>(null);
+    const textListener = React.useRef<EmitterSubscription | null>(null);
+    React.useEffect(() => {
+        if (textListener.current) textListener.current.remove();
+        textListener.current = Keyboard.addListener('keyboardDidHide', () => {
+            if (textInput.current) textInput.current.blur();
+            if (textListener.current) textListener.current.remove();
+        });
+    }, [textInput]);
+
+    const [inputText, setInputText] = React.useState<string>('');
+    const onChangeText = React.useCallback((t) => setInputText(t), [setInputText]);
+    const onSubmitEditing = React.useCallback(
+        () =>
+            dispatch({
+                item: props.element,
+                value: inputText,
+                context
+            }),
+        [props, dispatch, inputText, context]
+    );
+    const onBlur = React.useCallback(() => {
+        props.setEditing(false);
+        if (textListener.current) textListener.current.remove();
+    }, [props, textListener]);
+    const onPress = React.useCallback(() => {
+        props.setEditing(true);
+    }, [props]);
+
+    const styleItem = React.useMemo(
+        () => props.styles?.item ?? defaultStyles.item,
+        [props.styles?.item]
+    );
+    const styleValue = React.useMemo(
+        () => props.styles?.value ?? defaultStyles.value,
+        [props.styles?.value]
+    );
+    const styleLabel = React.useMemo(
+        () => props.styles?.label ?? defaultStyles.label,
+        [props.styles?.label]
+    );
+    const styleInput = React.useMemo(
+        () => props.styles?.input ?? defaultStyles.input,
+        [props.styles?.input]
+    );
+    const display = React.useMemo(
+        () => (props.element.display || ((i: number | string) => i.toString()))(value as never),
+        [value, props.element.display]
+    );
+    const jsx = React.useMemo(
+        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
+        [props.element.jsxLabel, styleLabel, props.element.label]
+    );
+    const kbType = React.useMemo(
+        () => (props.element.type === 'number' ? 'numeric' : undefined),
+        [props.element.type]
+    );
+
+    if (props.editing) {
+        return (
+            <View style={styleItem}>
+                <TextInput
+                    autoFocus
+                    ref={textInput}
+                    style={styleInput}
+                    value={inputText}
+                    blurOnSubmit={true}
+                    keyboardType={kbType}
+                    onChangeText={onChangeText}
+                    onSubmitEditing={onSubmitEditing}
+                    onBlur={onBlur}
+                />
+            </View>
+        );
+    }
+
+    return (
+        <TouchableOpacity onPress={onPress}>
+            <View style={styleItem}>
+                {jsx}
+                <Text style={styleValue}>{display}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+}
+
+function Enum(props: {
+    element: SettingsElementEnum;
+    styles?: SettingsStyle;
+    nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
+}) {
+    const context = React.useContext(SettingsContext);
+    const [value, dispatch] = React.useReducer(reducer, props.element.values[0]);
+
+    React.useEffect(() => {
+        context.spinStart();
+        then(props.element.get(), (v) => {
+            dispatch({item: props.element, value: v, initOnly: true, context});
+            context.spinStop();
+        });
+    }, [props.element, dispatch, context]);
+
+    const onChange = React.useCallback(
+        (v: string) => dispatch({item: props.element, value: v, context}),
+        [props.element, context]
+    );
+    const onPress = React.useCallback(
+        () =>
+            props.nav.navigation.navigate('ReactNativeSettingsEnum', {
+                data:
+                    EnumValuesIPC.push({
+                        element: props.element,
+                        onChange
+                    }) - 1
+            }),
+        [props.nav, props.element, onChange]
+    );
+
+    const styleItem = React.useMemo(
+        () => props.styles?.item ?? defaultStyles.item,
+        [props.styles?.item]
+    );
+    const styleValue = React.useMemo(
+        () => props.styles?.value ?? defaultStyles.value,
+        [props.styles?.value]
+    );
+    const styleLabel = React.useMemo(
+        () => props.styles?.label ?? defaultStyles.label,
+        [props.styles?.label]
+    );
+    const display = React.useMemo(
+        () => (props.element.display || ((i) => i))(value as string),
+        [value, props.element.display]
+    );
+    const jsx = React.useMemo(
+        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
+        [props.element.jsxLabel, styleLabel, props.element.label]
+    );
+
+    return (
+        <TouchableOpacity onPress={onPress}>
+            <View style={styleItem}>
+                {jsx}
+                <Text style={styleValue}>{display}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+}
+
 function SettingsList(props: {
     settings: SettingsElement[];
+    styles?: SettingsStyle;
     name?: string;
     nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
 }) {
     const context = React.useContext(SettingsContext);
 
-    const [values, dispatch] = React.useReducer(reducer, []);
-    React.useEffect(() => {
-        props.settings.map((el, i) => {
-            if (el.type === 'section') return;
-            context.spinStart();
-            then(el.get(), (v) => {
-                dispatch({idx: i, item: el, value: v, readOnly: true, context});
-                context.spinStop();
-            });
-        });
-    }, [props.settings, dispatch, context]);
-
-    const [editing, setEditing] = React.useState<number>(Infinity);
-    const [inputText, setInputText] = React.useState<string>('');
-    const textInput = React.useRef<TextInput>(null);
+    const [editing, setEditing] = React.useState<number>(NaN);
 
     return (
-        <View style={styles.list}>
+        <View style={props.styles?.list ?? defaultStyles.list}>
             {props.settings.map((element, i) => {
                 switch (element.type) {
                     case 'section':
                         return (
-                            <View key={i}>
-                                <View style={styles.header}>
-                                    <Text style={styles.label}>{element.label}</Text>
-                                </View>
-                                <SettingsList nav={props.nav} settings={element.elements} />
-                            </View>
+                            <Section
+                                key={i}
+                                element={element}
+                                styles={props.styles}
+                                nav={props.nav}
+                            />
                         );
                     case 'boolean':
-                        const onPress = () =>
-                            dispatch({idx: i, item: element, value: !values[i], context});
                         return (
-                            <TouchableOpacity key={i} style={styles.item} onPress={onPress}>
-                                <Text style={styles.label}>{element.label}</Text>
-                                <Switch onChange={onPress} value={values[i] as boolean} />
-                            </TouchableOpacity>
+                            <Boolean
+                                key={i}
+                                element={element}
+                                styles={props.styles}
+                                nav={props.nav}
+                            />
                         );
                     case 'string':
-                    case 'number': {
-                        const display = element.display || ((i: number | string) => i.toString());
-                        const kb = Keyboard.addListener('keyboardDidHide', () => {
-                            if (textInput.current) textInput.current.blur();
-                            kb.remove();
-                        });
-                        if (editing == i) {
-                            return (
-                                <View key={i} style={styles.item}>
-                                    <TextInput
-                                        autoFocus
-                                        ref={textInput}
-                                        style={styles.item}
-                                        value={inputText}
-                                        blurOnSubmit={true}
-                                        keyboardType={
-                                            element.type === 'number' ? 'numeric' : undefined
-                                        }
-                                        onChangeText={(t) => setInputText(t)}
-                                        onSubmitEditing={() =>
-                                            dispatch({
-                                                idx: i,
-                                                item: element,
-                                                value: inputText,
-                                                context
-                                            })
-                                        }
-                                        onBlur={() => {
-                                            setEditing(Infinity);
-                                            kb.remove();
-                                        }}
-                                    />
-                                </View>
-                            );
-                        }
+                    case 'number':
                         return (
-                            <TouchableOpacity
+                            <StringNumber
                                 key={i}
-                                style={styles.item}
-                                onPress={() => {
-                                    setEditing(i);
-                                    setInputText('');
-                                }}
-                            >
-                                <Text style={styles.label}>{element.label}</Text>
-                                <Text style={styles.value}>{display(values[i] as never)}</Text>
-                            </TouchableOpacity>
+                                element={element}
+                                styles={props.styles}
+                                nav={props.nav}
+                                editing={editing === i}
+                                setEditing={(v: boolean) => (v ? setEditing(i) : setEditing(NaN))}
+                            />
                         );
-                    }
-                    case 'enum': {
-                        const display = element.display || ((i) => i);
-                        const onChange = (v: string) =>
-                            dispatch({idx: i, item: element, value: v, context});
+                    case 'enum':
                         return (
-                            <TouchableOpacity
-                                key={i}
-                                style={styles.item}
-                                onPress={() =>
-                                    props.nav.navigation.navigate('ReactNativeSettingsEnum', {
-                                        data:
-                                            EnumValuesIPC.push({
-                                                element,
-                                                onChange
-                                            }) - 1
-                                    })
-                                }
-                            >
-                                <Text style={styles.label}>{element.label}</Text>
-                                <Text style={styles.value}>{display(values[i] as string)}</Text>
-                            </TouchableOpacity>
+                            <Enum key={i} element={element} styles={props.styles} nav={props.nav} />
                         );
-                    }
                 }
             })}
         </View>
     );
 }
 
-function EnumValues(props: {element: SettingsElementEnum; onChange: (val: string) => void}) {
+function EnumValues(props: {
+    element: SettingsElementEnum;
+    onChange: (val: string) => void;
+    styles?: SettingsStyle;
+}) {
     const display = props.element.display || ((i) => i);
     return (
         <View>
             {props.element.values.map((val, i) => (
-                <TouchableOpacity key={i} style={styles.item} onPress={() => props.onChange(val)}>
-                    <Text>{display(val)}</Text>
-                </TouchableOpacity>
+                <View key={i} style={props.styles?.item ?? defaultStyles.item}>
+                    <TouchableOpacity onPress={() => props.onChange(val)}>
+                        <Text>{display(val)}</Text>
+                    </TouchableOpacity>
+                </View>
             ))}
         </View>
     );
 }
 
-export default function ReactNativeSettings(props: {settings: SettingsElement[]}) {
+const activityStyle: Record<'true' | 'false', StyleProp<ViewStyle>> = {
+    true: {
+        flex: 1,
+        opacity: 0.25
+    },
+    false: {
+        flex: 1,
+        opacity: 1
+    }
+};
+
+export default function ReactNativeSettings(props: {
+    settings: SettingsElement[];
+    styles?: SettingsStyle;
+}) {
     const [spinning, setSpinning] = React.useState<number>(0);
+
+    const styleScreen = React.useMemo(
+        () => props.styles?.screen ?? defaultStyles.screen,
+        [props.styles?.screen]
+    );
+    const styleSpinner = React.useMemo(
+        () => props.styles?.spinner ?? defaultStyles.spinner,
+        [props.styles?.spinner]
+    );
 
     const context = React.useMemo(
         () => ({
@@ -298,20 +530,71 @@ export default function ReactNativeSettings(props: {settings: SettingsElement[]}
         [setSpinning]
     );
 
+    const EnumValuesMemo = React.useCallback(
+        (nav) => (
+            <EnumValues
+                element={EnumValuesIPC[nav.route.params.data].element}
+                styles={props.styles}
+                onChange={(v: string) => {
+                    EnumValuesIPC[nav.route.params.data].onChange(v);
+                    nav.navigation.navigate('ReactNativeSettingsMain');
+                    EnumValuesIPC.splice(nav.route.params.data, 1);
+                }}
+            />
+        ),
+        [props.styles]
+    );
+
+    const spinnerState = React.useRef<{timer: number; state: boolean}>({
+        timer: 0,
+        state: true
+    });
+    const [spinnerShown, setSpinnerShown] = React.useState<boolean>(true);
+    React.useLayoutEffect(() => {
+        // This is transition has a brief grace time to avoid flickering the screen
+        // on very fast updated
+        if (spinning > 0 !== spinnerState.current.state) {
+            if (spinnerState.current.timer) clearTimeout(spinnerState.current.timer);
+            spinnerState.current.state = spinning > 0;
+
+            // The limit of human perception is about 50ms
+            spinnerState.current.timer = window.setTimeout(
+                () => {
+                    spinnerState.current.timer = 0;
+                    setSpinnerShown(spinning > 0);
+                },
+                // Spinning off is immediate
+                spinning > 0 ? 50 : 0
+            );
+        }
+        return () => {
+            // Cleanup when the component is unmounted
+            if (spinnerState.current && spinnerState.current.timer)
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                clearTimeout(spinnerState.current.timer);
+        };
+    });
+
     return (
-        <View style={styles.screen}>
+        <View style={styleScreen}>
             <View
                 pointerEvents={spinning > 0 ? 'none' : 'auto'}
-                style={{flex: 1, opacity: spinning > 0 ? 0.25 : 1}}
+                style={activityStyle[spinnerShown.toString()]}
             >
+                {spinnerShown ? <ActivityIndicator style={styleSpinner} size='large' /> : null}
                 <SettingsContext.Provider value={context}>
-                    {spinning ? <ActivityIndicator style={styles.loading} size='large' /> : null}
                     <SettingsStack.Navigator>
                         <SettingsStack.Screen
                             name={'ReactNativeSettingsMain'}
                             options={{headerShown: false}}
                         >
-                            {(nav) => <SettingsList nav={nav} settings={props.settings} />}
+                            {(nav) => (
+                                <SettingsList
+                                    nav={nav}
+                                    settings={props.settings}
+                                    styles={props.styles}
+                                />
+                            )}
                         </SettingsStack.Screen>
                         <SettingsStack.Screen
                             name={'ReactNativeSettingsEnum'}
@@ -319,16 +602,7 @@ export default function ReactNativeSettings(props: {settings: SettingsElement[]}
                                 title: EnumValuesIPC[route.params.data].element.label
                             })}
                         >
-                            {(nav) => (
-                                <EnumValues
-                                    element={EnumValuesIPC[nav.route.params.data].element}
-                                    onChange={(v: string) => {
-                                        EnumValuesIPC[nav.route.params.data].onChange(v);
-                                        nav.navigation.navigate('ReactNativeSettingsMain');
-                                        EnumValuesIPC.splice(nav.route.params.data, 1);
-                                    }}
-                                />
-                            )}
+                            {EnumValuesMemo}
                         </SettingsStack.Screen>
                     </SettingsStack.Navigator>
                 </SettingsContext.Provider>

@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Switch, TextInput} from 'react-native';
-import {act, fireEvent, render, waitFor} from '@testing-library/react-native';
+import {fireEvent, render} from '@testing-library/react-native';
 
 import Settings from 'react-native-settings-screen';
 
-import {settingsSync, reset} from './data';
+import {settingsSync, reset, waitForSpinner} from './data';
 
 describe('sync', () => {
     beforeEach(reset);
@@ -16,6 +16,7 @@ describe('sync', () => {
                 <Settings settings={settingsSync} />
             </NavigationContainer>
         );
+        await waitForSpinner(r);
         expect(r.getByText('Intelligence')).toBeDefined();
         expect(r.toJSON()).toMatchSnapshot();
 
@@ -27,6 +28,7 @@ describe('sync', () => {
                 <Settings settings={newSettings} />
             </NavigationContainer>
         );
+        await waitForSpinner(r);
         expect(r.getByText('Dexterity'));
         expect(r.toJSON()).toMatchSnapshot();
         r.unmount();
@@ -43,6 +45,7 @@ describe('sync', () => {
                 <Settings settings={newSettings} />
             </NavigationContainer>
         );
+        await waitForSpinner(r);
         expect(r.getByText('Intelligence')).toBeDefined();
 
         fireEvent.press(r.getByText('Name'));
@@ -73,6 +76,7 @@ describe('sync', () => {
                 <Settings settings={newSettings} />
             </NavigationContainer>
         );
+        await waitForSpinner(r);
         expect(r.getByText('Medium')).toBeDefined();
 
         fireEvent.press(r.getByText('Medium'));
@@ -101,6 +105,7 @@ describe('sync', () => {
                 <Settings settings={newSettings} />
             </NavigationContainer>
         );
+        await waitForSpinner(r);
         expect(r.getByText('Wings')).toBeDefined();
         expect(r.UNSAFE_queryAllByType(Switch)[0].props.value).toBe(false);
 

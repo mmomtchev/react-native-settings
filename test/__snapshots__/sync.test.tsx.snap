@@ -103,33 +103,40 @@ exports[`sync render 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  empty
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    empty
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -144,33 +151,40 @@ exports[`sync render 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -185,37 +199,48 @@ exports[`sync render 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -329,33 +354,40 @@ exports[`sync render 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  empty
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    empty
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -370,33 +402,40 @@ exports[`sync render 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Dexterity
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Dexterity
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -411,37 +450,48 @@ exports[`sync render 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -555,33 +605,40 @@ exports[`sync set a boolean element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  empty
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    empty
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -596,33 +653,40 @@ exports[`sync set a boolean element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -637,37 +701,48 @@ exports[`sync set a boolean element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={true}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={true}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -791,15 +866,7 @@ exports[`sync set a string element 1`] = `
                   onSubmitEditing={[Function]}
                   style={
                     Object {
-                      "alignItems": "center",
-                      "borderBottomWidth": 2,
-                      "borderColor": "#c8c7cc",
-                      "flexDirection": "row",
                       "fontFamily": "sans-serif",
-                      "height": 40,
-                      "justifyContent": "space-between",
-                      "paddingEnd": 10,
-                      "paddingStart": 10,
                     }
                   }
                   value=""
@@ -818,33 +885,40 @@ exports[`sync set a string element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -859,37 +933,48 @@ exports[`sync set a string element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -1003,33 +1088,40 @@ exports[`sync set a string element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Vogon
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Vogon
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1044,33 +1136,40 @@ exports[`sync set a string element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1085,37 +1184,48 @@ exports[`sync set a string element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -1229,33 +1339,40 @@ exports[`sync set an enum element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  empty
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    empty
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1270,33 +1387,40 @@ exports[`sync set an enum element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  Medium
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1311,37 +1435,48 @@ exports[`sync set an enum element 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -1395,16 +1530,6 @@ exports[`sync set an enum element 1`] = `
           >
             <View>
               <View
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
                     "alignItems": "center",
@@ -1414,27 +1539,34 @@ exports[`sync set an enum element 1`] = `
                     "fontFamily": "sans-serif",
                     "height": 40,
                     "justifyContent": "space-between",
-                    "opacity": 1,
                     "paddingEnd": 10,
                     "paddingStart": 10,
                   }
                 }
               >
-                <Text>
-                  Low
-                </Text>
+                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <Text>
+                    Low
+                  </Text>
+                </View>
               </View>
               <View
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
                     "alignItems": "center",
@@ -1444,27 +1576,34 @@ exports[`sync set an enum element 1`] = `
                     "fontFamily": "sans-serif",
                     "height": 40,
                     "justifyContent": "space-between",
-                    "opacity": 1,
                     "paddingEnd": 10,
                     "paddingStart": 10,
                   }
                 }
               >
-                <Text>
-                  Medium
-                </Text>
+                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <Text>
+                    Medium
+                  </Text>
+                </View>
               </View>
               <View
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
                     "alignItems": "center",
@@ -1474,15 +1613,32 @@ exports[`sync set an enum element 1`] = `
                     "fontFamily": "sans-serif",
                     "height": 40,
                     "justifyContent": "space-between",
-                    "opacity": 1,
                     "paddingEnd": 10,
                     "paddingStart": 10,
                   }
                 }
               >
-                <Text>
-                  High
-                </Text>
+                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <Text>
+                    High
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -1596,33 +1752,40 @@ exports[`sync set an enum element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Name
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  empty
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Name
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    empty
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1637,33 +1800,40 @@ exports[`sync set an enum element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Intelligence
-                </Text>
-                <Text
+                <View
                   style={
                     Object {
-                      "color": "#c8c7cc",
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
-                  High
-                </Text>
+                  <Text
+                    style={Object {}}
+                  >
+                    Intelligence
+                  </Text>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#c8c7cc",
+                      }
+                    }
+                  >
+                    High
+                  </Text>
+                </View>
               </View>
               <View
                 accessible={true}
@@ -1678,37 +1848,48 @@ exports[`sync set an enum element 2`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
                     "opacity": 1,
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
                   }
                 }
               >
-                <Text
-                  style={Object {}}
-                >
-                  Wings
-                </Text>
-                <RCTSwitch
-                  accessibilityRole="switch"
-                  onChange={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                <View
                   style={
                     Object {
-                      "height": 31,
-                      "width": 51,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
-                  value={false}
-                />
+                >
+                  <Text
+                    style={Object {}}
+                  >
+                    Wings
+                  </Text>
+                  <View
+                    pointerEvents="none"
+                  >
+                    <RCTSwitch
+                      accessibilityRole="switch"
+                      onChange={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "height": 31,
+                          "width": 51,
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>

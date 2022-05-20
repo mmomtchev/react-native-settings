@@ -1,3 +1,6 @@
+import {View} from 'react-native';
+import {RenderAPI, waitFor} from '@testing-library/react-native';
+
 import {
     SettingsElementBoolean,
     SettingsElementEnum,
@@ -71,4 +74,11 @@ export const settingsAsync: [SettingsElementString, SettingsElementEnum, Setting
 
 export function reset() {
     configData = {};
+}
+
+export function waitForSpinner(r: RenderAPI): Promise<void> {
+    return waitFor(async () => {
+        await expect(r.UNSAFE_queryAllByType(View)[1].props.pointerEvents).toBe('auto');
+        await expect(r.UNSAFE_queryAllByType(View)[1].props.style.opacity).toBe(1);
+    }).then(() => undefined);
 }

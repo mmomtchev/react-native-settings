@@ -7,9 +7,10 @@ import './app.css';
 import phoneScreen from './phonescreen.svg';
 import pkgConfig from '../package.json';
 
-const examples = {
+const examples: Record<string, {title: string; file: string; code?: Promise<string>}> = {
     simple: {title: 'Simple', file: 'Simple'},
-    advanced: {title: 'Async', file: 'withAsync'}
+    advanced: {title: 'Async', file: 'withAsync'},
+    customization: {title: 'Customization', file: 'Customization'}
 };
 
 // The examples use a code-loading technique that I have described in
@@ -21,10 +22,10 @@ const CodeBlock = React.lazy(() => import(/* webpackPrefetch: true */ './CodeBlo
 for (const ex of Object.keys(examples)) {
     examples[ex].code = import(
         /* webpackPrefetch: true */ `!!html-loader?{"minimize":false}!./jsx-loader.cjs!./items/${examples[ex].file}.tsx`
-    ).then((code) => code.default);
+    ).then((code) => code.default as string);
 }
 
-const LeftMenuItem = (props): JSX.Element => (
+const LeftMenuItem = (props: {id: string; title: string}): JSX.Element => (
     <Link to={props.id}>
         <button className='btn btn-light w-100'>{props.title}</button>
     </Link>
@@ -65,7 +66,7 @@ const App = (): JSX.Element => {
                                             <React.Suspense fallback={<div>Parsing code...</div>}>
                                                 <CodeBlock
                                                     title={examples[e].title}
-                                                    code={examples[e].code}
+                                                    code={examples[e].code!}
                                                 />
                                             </React.Suspense>
                                         </div>
