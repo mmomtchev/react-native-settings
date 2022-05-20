@@ -104,6 +104,37 @@ describe('sync', () => {
         r.unmount();
     });
 
+    it('deny setting a string element', async () => {
+        const newSettings = [...settingsSync];
+        newSettings[0] = {...newSettings[0]};
+        newSettings[0].get = jest.fn(settingsSync[0].get);
+        newSettings[0].set = jest.fn(() => false);
+
+        const r = render(
+            <NavigationContainer>
+                <Settings settings={newSettings} />
+            </NavigationContainer>
+        );
+        await waitForSpinner(r);
+        expect(r.getByText('Intelligence')).toBeDefined();
+
+        fireEvent.press(r.getByText('Name'));
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(1);
+        expect(r.toJSON()).toMatchSnapshot();
+
+        fireEvent.changeText(r.UNSAFE_queryAllByType(TextInput)[0], 'Vogon');
+        fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'submitEditing');
+        fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'blur');
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(0);
+        expect(r.getByText('empty')).toBeDefined();
+        expect(r.toJSON()).toMatchSnapshot();
+
+        expect(newSettings[0].get).toHaveBeenCalledTimes(1);
+        expect(newSettings[0].set).toHaveBeenCalledTimes(1);
+        expect(newSettings[0].set).toBeCalledWith('Vogon');
+        r.unmount();
+    });
+
     it('set an enum element', async () => {
         const newSettings = [...settingsSync];
         newSettings[1] = {...newSettings[1]};
