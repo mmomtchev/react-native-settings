@@ -1,5 +1,7 @@
 # react-native-settings-screen
 
+[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings-screen)](https://github.com/mmomtchev/react-native-settings-screen/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings-screen)](https://www.npmjs.com/package/react-native-settings-screen) [![Node.js CI](https://github.com/mmomtchev/react-native-settings-screen/workflows/Node.js%20CI/badge.svg)](https://github.com/mmomtchev/react-native-settings-screen/actions?query=workflow%3A%22Node.js+CI%22) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings-screen/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings-screen)
+
 **React Native Universal Settings Screen With Async Support & Spinner**
 
 To my greatest surprise, `react-native`, unlike the native frameworks of iOS and Android, does not offer a standard ready-to-use `Settings` screen template.
@@ -97,12 +99,12 @@ export default function Settings() {
 
 ### Table of Contents
 
-*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
-*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
-*   [ReactNativeSettings](#reactnativesettings)
-    *   [Parameters](#parameters)
-*   [settings](#settings)
-*   [styles](#styles)
+-   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+-   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+-   [ReactNativeSettings](#reactnativesettings)
+    -   [Parameters](#parameters)
+-   [settings](#settings)
+-   [styles](#styles)
 
 ## ReactNativeSettingsGetter
 
@@ -124,11 +126,11 @@ Type: function (v: T): ([boolean](https://developer.mozilla.org/docs/Web/JavaScr
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
+Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
 
 ### Parameters
 
-*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}** 
+-   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}**
 
 ## settings
 
@@ -163,4 +165,5 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **Includes Wings by Pedro Santos from NounProject.com**
 
 ```
+
 ```
