@@ -1,11 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Switch, TextInput} from 'react-native';
-import {fireEvent, render} from '@testing-library/react-native';
+import {Keyboard, Switch, TextInput} from 'react-native';
+import {act, fireEvent, render} from '@testing-library/react-native';
 
 import Settings from 'react-native-settings-screen';
 
 import {settingsSync, reset, waitForSpinner} from './data';
+
+const kbMock = jest.fn(Keyboard.addListener);
+Keyboard.addListener = kbMock;
 
 describe('sync', () => {
     beforeEach(reset);
@@ -62,6 +65,42 @@ describe('sync', () => {
         expect(newSettings[0].get).toHaveBeenCalledTimes(1);
         expect(newSettings[0].set).toHaveBeenCalledTimes(1);
         expect(newSettings[0].set).toBeCalledWith('Vogon');
+        r.unmount();
+    });
+
+    it('close the keyboard while setting a screen element', async () => {
+        const newSettings = [...settingsSync];
+        newSettings[0] = {...newSettings[0]};
+        newSettings[0].get = jest.fn(settingsSync[0].get);
+        newSettings[0].set = jest.fn(settingsSync[0].set);
+
+        const r = render(
+            <NavigationContainer>
+                <Settings settings={newSettings} />
+            </NavigationContainer>
+        );
+        await waitForSpinner(r);
+        expect(r.getByText('Intelligence')).toBeDefined();
+
+        fireEvent.press(r.getByText('Name'));
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(1);
+        expect(r.toJSON()).toMatchSnapshot();
+
+        fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'focus');
+        fireEvent.changeText(r.UNSAFE_queryAllByType(TextInput)[0], 'Vogon');
+        expect(Keyboard.addListener).toHaveBeenCalled();
+
+        const handler = kbMock.mock.lastCall[1] as unknown as () => void;
+        act(() => {
+            handler();
+            fireEvent(r.UNSAFE_queryAllByType(TextInput)[0], 'blur');
+        });
+
+        expect(r.UNSAFE_queryAllByType(TextInput)).toHaveLength(0);
+        expect(r.toJSON()).toMatchSnapshot();
+
+        expect(newSettings[0].get).toHaveBeenCalledTimes(1);
+        expect(newSettings[0].set).toHaveBeenCalledTimes(0);
         r.unmount();
     });
 
