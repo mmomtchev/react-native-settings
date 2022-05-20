@@ -16,7 +16,7 @@ describe('async', () => {
                 <Settings settings={settingsAsync} />
             </NavigationContainer>
         );
-        await waitFor(async () => expect(r.getByText('Medium')).toBeDefined());
+        await waitForSpinner(r);
 
         expect(r.getByText('Intelligence')).toBeDefined();
         expect(r.toJSON()).toMatchSnapshot();

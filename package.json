@@ -11,6 +11,7 @@
     "publish:examples": "node publish-ghpages.cjs",
     "clean": "tsc --build --clean",
     "eslint": "eslint src/*.ts* examples/*.ts*",
+    "test": "jest",
     "dev": "webpack-cli serve --mode=development --env development --open",
     "codecov": "curl -s https://codecov.io/bash | bash"
   },
