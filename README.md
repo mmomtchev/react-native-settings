@@ -1,6 +1,6 @@
 # react-native-settings-screen
 
-[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings-screen)](https://github.com/mmomtchev/react-native-settings-screen/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings-screen)](https://www.npmjs.com/package/react-native-settings-screen) [![Node.js CI](https://github.com/mmomtchev/react-native-settings-screen/workflows/Node.js%20CI/badge.svg)](https://github.com/mmomtchev/react-native-settings-screen/actions?query=workflow%3A%22Node.js+CI%22) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings-screen/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings-screen)
+[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings-screen)](https://github.com/mmomtchev/react-native-settings-screen/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings-screen)](https://www.npmjs.com/package/react-native-settings-screen) [![test-dev](https://github.com/mmomtchev/react-native-settings-screen/actions/workflows/test-dev.yml/badge.svg)](https://github.com/mmomtchev/react-native-settings-screen/actions/workflows/test-dev.yml) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings-screen/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings-screen)
 
 **React Native Universal Settings Screen With Async Support & Spinner**
 
