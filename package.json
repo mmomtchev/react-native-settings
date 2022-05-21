@@ -70,6 +70,7 @@
     "jest": "^27.5.1",
     "jest-canvas-mock": "^2.4.0",
     "jest-environment-jsdom": "^27.5.1",
+    "jest-haste-map": "^27.5.1",
     "markdown-loader": "^8.0.0",
     "prettier": "^2.6.2",
     "prism-themes": "^1.9.0",

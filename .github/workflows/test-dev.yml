@@ -20,7 +20,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 14.x
-            - run: npm i
+            - run: npm ci
             - run: npm run build
             - run: npm test
 
@@ -33,7 +33,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 14.x
-            - run: npm i
+            - run: npm ci
             - run: npm run test
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
