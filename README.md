@@ -105,12 +105,12 @@ export default function Settings() {
 
 ### Table of Contents
 
--   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
--   [ReactNativeSettingsSetter](#reactnativesettingssetter)
--   [ReactNativeSettings](#reactnativesettings)
-    -   [Parameters](#parameters)
--   [settings](#settings)
--   [styles](#styles)
+*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+*   [ReactNativeSettings](#reactnativesettings)
+    *   [Parameters](#parameters)
+*   [settings](#settings)
+*   [styles](#styles)
 
 ## ReactNativeSettingsGetter
 
@@ -132,11 +132,11 @@ Type: function (v: T): ([boolean](https://developer.mozilla.org/docs/Web/JavaScr
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
+Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
 
 ### Parameters
 
--   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}**
+*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}** 
 
 ## settings
 
