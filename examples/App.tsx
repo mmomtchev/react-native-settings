@@ -5,9 +5,11 @@ import {HashRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 import './app.css';
 import phoneScreen from './phonescreen.svg';
-import pkgConfig from '../package.json';
 
-const examples: Record<string, {title: string; file: string; code?: Promise<string>}> = {
+const examples: Record<
+    string,
+    {title: string; file: string; code?: Promise<string>; text?: Promise<string>}
+> = {
     simple: {title: 'Simple', file: 'Simple'},
     advanced: {title: 'Async', file: 'withAsync'},
     customization: {title: 'Customization', file: 'Customization'}
@@ -23,6 +25,9 @@ for (const ex of Object.keys(examples)) {
     examples[ex].code = import(
         /* webpackPrefetch: true */ `!!html-loader?{"minimize":false}!./jsx-loader.cjs!./items/${examples[ex].file}.tsx`
     ).then((code) => code.default as string);
+    examples[ex].text = import(
+        /* webpackPrefetch: true */ `!!raw-loader!./items/${examples[ex].file}.tsx`
+    ).then((code) => code.default as string);
 }
 
 const LeftMenuItem = (props: {id: string; title: string}): JSX.Element => (
@@ -35,7 +40,7 @@ const App = (): JSX.Element => {
     return (
         <Router>
             <h1 className='m-2'>
-                <strong>react-native-settings {pkgConfig.version as string} Examples</strong>
+                <strong>react-native-settings {VERSION} Examples</strong>
             </h1>
             <div className='d-flex flex-row p-3'>
                 <div className='d-flex flex-column left-menu me-2'>
@@ -62,11 +67,12 @@ const App = (): JSX.Element => {
                                 path={`/${e}`}
                                 element={
                                     <div className='d-flex fex-row'>
-                                        <div className=''>
+                                        <div>
                                             <React.Suspense fallback={<div>Parsing code...</div>}>
                                                 <CodeBlock
                                                     title={examples[e].title}
                                                     code={examples[e].code!}
+                                                    text={examples[e].text!}
                                                 />
                                             </React.Suspense>
                                         </div>

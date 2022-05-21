@@ -1,18 +1,15 @@
-import * as path from 'path';
-import * as fs from 'fs';
-import { fileURLToPath } from 'url';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const list = fs.readdirSync(path.resolve(__dirname, 'examples', 'items'));
 
 const examples = {};
-for (const ex of list.map((file) => ({ file, name: path.parse(file).name })))
+for (const ex of list.map((file) => ({file, name: path.parse(file).name})))
     examples[ex.name] = path.join(__dirname, 'examples', 'items', ex.file);
 
-export default {
+module.exports = {
     entry: {
         main: './examples/index.tsx',
         ...examples
@@ -27,23 +24,19 @@ export default {
                     path.resolve(__dirname, 'node_modules/react-native'),
                     path.resolve(__dirname, 'node_modules/@react-native'),
                     path.resolve(__dirname, 'node_modules/@react-navigation'),
-                    path.resolve(__dirname, 'node_modules/expo-dev-menu/vendored/react-native-safe-area-context/src')
+                    path.resolve(
+                        __dirname,
+                        'node_modules/expo-dev-menu/vendored/react-native-safe-area-context/src'
+                    )
                 ],
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
                             cacheDirectory: true,
-                            presets: [
-                                'module:metro-react-native-babel-preset'
-                            ],
-                            plugins: [
-                                ['react-native-web', { commonjs: true }],
-                            ]
+                            presets: ['module:metro-react-native-babel-preset'],
+                            plugins: [['react-native-web', {commonjs: true}]]
                         }
-                    },
-                    {
-                        loader: './examples/native-loader.cjs'
                     }
                 ]
             },
@@ -53,7 +46,7 @@ export default {
                     loader: 'url-loader',
                     options: {
                         name: '[name].[ext]',
-                        esModule: false,
+                        esModule: false
                     }
                 }
             },
@@ -72,12 +65,18 @@ export default {
             template: path.resolve(__dirname, 'examples', 'index.html'),
             inject: false
         }),
-        ...Object.keys(examples).map((ex) => new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'examples', 'native.html'),
-            templateParameters: { file: ex },
-            filename: `${ex}.html`,
-            inject: false
-        }))
+        new webpack.DefinePlugin({
+            VERSION: JSON.stringify(require('./package.json').version)
+        }),
+        ...Object.keys(examples).map(
+            (ex) =>
+                new HtmlWebpackPlugin({
+                    template: path.resolve(__dirname, 'examples', 'native.html'),
+                    templateParameters: {file: ex},
+                    filename: `${ex}.html`,
+                    inject: false
+                })
+        )
     ],
     devServer: {
         port: 8040
@@ -91,7 +90,8 @@ export default {
         alias: {
             '@mmomtchev/react-native-settings$': path.resolve(__dirname, 'src'),
             'react-native$': 'react-native-web',
-            'react-native-safe-area-context': 'expo-dev-menu/vendored/react-native-safe-area-context/src'
+            'react-native-safe-area-context':
+                'expo-dev-menu/vendored/react-native-safe-area-context/src'
         }
     }
 };

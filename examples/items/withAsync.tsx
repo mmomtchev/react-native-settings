@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -148,3 +149,5 @@ export default function Settings() {
         </NavigationContainer>
     );
 }
+
+ReactDOM.render(<Settings />, document.getElementById('root'));
