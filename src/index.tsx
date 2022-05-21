@@ -443,8 +443,6 @@ function SettingsList(props: {
     name?: string;
     nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
 }) {
-    const context = React.useContext(SettingsContext);
-
     const [editing, setEditing] = React.useState<number>(NaN);
 
     return (
@@ -580,8 +578,8 @@ export default function ReactNativeSettings(props: {
     });
     const [spinnerShown, setSpinnerShown] = React.useState<boolean>(true);
     React.useLayoutEffect(() => {
-        // This is transition has a brief grace time to avoid flickering the screen
-        // on very fast updated
+        // This transition has a brief grace time to avoid flickering the screen
+        // on very fast asynchronous configuration operations
         if (spinning > 0 !== spinnerState.current.state) {
             if (spinnerState.current.timer) clearTimeout(spinnerState.current.timer);
             spinnerState.current.state = spinning > 0;
