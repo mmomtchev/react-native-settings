@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [1.0.3]
 
--   Add an export transpiled to CJS
+-   Add a CJS export transpiled to ES5 (ES2009)
+-   Transpile the ES6 module to ES5 (ES2015)
 
 ### [1.0.2] 2022-05-22
 
