@@ -5,7 +5,7 @@ import {
     SettingsElementBoolean,
     SettingsElementEnum,
     SettingsElementString
-} from 'react-native-settings-screen';
+} from '@mmomtchev/react-native-settings';
 
 let configData = {};
 

@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Keyboard, Switch, TextInput} from 'react-native';
 import {act, fireEvent, render} from '@testing-library/react-native';
 
-import Settings from 'react-native-settings-screen';
+import Settings from '@mmomtchev/react-native-settings';
 
 import {settingsSync, reset, waitForSpinner} from './data';
 

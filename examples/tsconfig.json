@@ -9,7 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "paths": {
-            "react-native-settings-screen": [
+            "@mmomtchev/react-native-settings": [
                 "../src"
             ]
         }

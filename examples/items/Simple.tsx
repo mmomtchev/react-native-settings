@@ -2,7 +2,7 @@ import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {default as ReactNativeSettings, SettingsElement} from 'react-native-settings-screen';
+import {default as ReactNativeSettings, SettingsElement} from '@mmomtchev/react-native-settings';
 
 // We will store the config here
 const configData: Record<string, string> = {};

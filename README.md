@@ -1,20 +1,24 @@
-# react-native-settings-screen
+# react-native-settings
 
-[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings-screen)](https://github.com/mmomtchev/react-native-settings-screen/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings-screen)](https://www.npmjs.com/package/react-native-settings-screen) [![test-dev](https://github.com/mmomtchev/react-native-settings-screen/actions/workflows/test-dev.yml/badge.svg)](https://github.com/mmomtchev/react-native-settings-screen/actions/workflows/test-dev.yml) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings-screen/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings-screen)
+[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings)](https://github.com/mmomtchev/react-native-settings/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings)](https://www.npmjs.com/package/@mmomtchev/react-native-settings) [![test-dev](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml/badge.svg)](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings)
 
 **React Native Universal Settings Screen With Async Support & Spinner**
 
 To my greatest surprise, `react-native`, unlike the native frameworks of iOS and Android, does not offer a standard ready-to-use `Settings` screen template.
 
-It seems that the `react-native` developers have decided to leave those components to the community.
+This package fills this void providing the basic framework needed to implement a settings screen, bringing down its cost from 1 day to 15 minutes for a simple application.
+
+It works with any configuration getter or setter and it will automatically display a spinner if you use an asynchronous function.
+
+It can be freely styled to match the looks of the application.
 
 # Usage
 
 ```shell
-npm i --save react-native-settings-screen
+npm i --save @mmomtchev/react-native-settings
 ```
 
-[Check the examples](https://mmomtchev.github.io/react-native-settings-screen/)
+[Check the examples](https://mmomtchev.github.io/react-native-settings/)
 
 ## Quick Start
 
@@ -25,7 +29,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {default as ReactNativeSettings, SettingsElement} from 'react-native-settings-screen';
+import {default as ReactNativeSettings, SettingsElement} from '@mmomtchev/react-native-settings';
 
 // We will store the config here
 const configData: Record<string, string> = {};
@@ -91,7 +95,7 @@ export default function Settings() {
 }
 ```
 
-![screenshot](https://raw.githubusercontent.com/mmomtchev/react-native-settings-screen/main/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/mmomtchev/react-native-settings/main/screenshot.png)
 
 # API
 
@@ -99,12 +103,12 @@ export default function Settings() {
 
 ### Table of Contents
 
--   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
--   [ReactNativeSettingsSetter](#reactnativesettingssetter)
--   [ReactNativeSettings](#reactnativesettings)
-    -   [Parameters](#parameters)
--   [settings](#settings)
--   [styles](#styles)
+*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+*   [ReactNativeSettings](#reactnativesettings)
+    *   [Parameters](#parameters)
+*   [settings](#settings)
+*   [styles](#styles)
 
 ## ReactNativeSettingsGetter
 
@@ -126,11 +130,11 @@ Type: function (v: T): ([boolean](https://developer.mozilla.org/docs/Web/JavaScr
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
+Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
 
 ### Parameters
 
--   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}**
+*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}** 
 
 ## settings
 

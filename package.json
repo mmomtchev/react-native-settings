@@ -1,5 +1,5 @@
 {
-  "name": "react-native-settings-screen",
+  "name": "@mmomtchev/react-native-settings",
   "version": "1.0.0",
   "description": "React Native Universal Settings Screen",
   "module": "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mmomtchev/react-native-settings-screen.git"
+    "url": "git+https://github.com/mmomtchev/react-native-settings.git"
   },
   "keywords": [
     "React",
@@ -29,9 +29,9 @@
   "author": "Momtchil Momtchev <momtchil@momtchev.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mmomtchev/react-native-settings-screen/issues"
+    "url": "https://github.com/mmomtchev/react-native-settings/issues"
   },
-  "homepage": "https://github.com/mmomtchev/react-native-settings-screen#readme",
+  "homepage": "https://github.com/mmomtchev/react-native-settings#readme",
   "peerDependencies": {
     "@react-navigation/native": "^>=6.0.0",
     "@react-navigation/native-stack": ">=6.6.0",

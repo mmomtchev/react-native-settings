@@ -3,7 +3,7 @@ import {Dimensions, StyleSheet, View, Image, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
 import wings from '../wings.svg';
-import {default as ReactNativeSettings, SettingsElement} from 'react-native-settings-screen';
+import {default as ReactNativeSettings, SettingsElement} from '@mmomtchev/react-native-settings';
 
 const configData: Record<string, string> = {};
 

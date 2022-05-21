@@ -89,7 +89,7 @@ export default {
     resolve: {
         extensions: ['.ts', '.tsx', 'web.js', '.js'],
         alias: {
-            'react-native-settings-screen$': path.resolve(__dirname, 'src'),
+            '@mmomtchev/react-native-settings$': path.resolve(__dirname, 'src'),
             'react-native$': 'react-native-web',
             'react-native-safe-area-context': 'expo-dev-menu/vendored/react-native-safe-area-context/src'
         }

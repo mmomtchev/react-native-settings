@@ -3,7 +3,7 @@ import {Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {render} from '@testing-library/react-native';
 
-import Settings, {SettingsElement, SettingsStyle} from 'react-native-settings-screen';
+import Settings, {SettingsElement, SettingsStyle} from '@mmomtchev/react-native-settings';
 import {waitForSpinner} from './data';
 
 describe('styles', () => {

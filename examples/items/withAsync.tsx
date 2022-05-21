@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 // This example uses react-native async-storage to store the configuration
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {default as ReactNativeSettings, SettingsElement} from 'react-native-settings-screen';
+import {default as ReactNativeSettings, SettingsElement} from '@mmomtchev/react-native-settings';
 
 const styles = StyleSheet.create({
     container: {
