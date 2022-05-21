@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@react-navigation/native": ">=6.0.0",
     "@react-navigation/native-stack": ">=6.6.0",
-    "@types/react": ">=18.0.9",
+    "@types/react": ">=17.0.0",
     "react": ">=17.0.0",
     "react-native": ">=0.68.0"
   },
@@ -50,7 +50,7 @@
     "@testing-library/react-native": "^9.1.0",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.34",
-    "@types/react": "^18.0.9",
+    "@types/react": "^17.0.45",
     "@types/react-dom": "^18.0.4",
     "@types/react-native": "^0.67.7",
     "@types/webpack": "^5.28.0",
