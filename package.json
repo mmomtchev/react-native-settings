@@ -14,7 +14,10 @@
     "eslint": "eslint src/*.ts* examples/*.ts*",
     "test": "jest",
     "dev": "webpack-cli serve --mode=development --env development --open",
-    "codecov": "curl -s https://codecov.io/bash | bash"
+    "codecov": "curl -s https://codecov.io/bash | bash",
+    "preversion": "npm run test",
+    "version": "npm run clean && npm run build && git add package.json README.md",
+    "postversion": "git push && git push --tags && npm run publish:examples"
   },
   "repository": {
     "type": "git",
