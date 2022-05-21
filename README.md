@@ -1,6 +1,6 @@
 # react-native-settings
 
-[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings)](https://github.com/mmomtchev/react-native-settings/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react-native-settings)](https://www.npmjs.com/package/@mmomtchev/react-native-settings) [![test-dev](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml/badge.svg)](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings)
+[![License: ISC](https://img.shields.io/github/license/mmomtchev/react-native-settings)](https://github.com/mmomtchev/react-native-settings/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/@mmomtchev/react-native-settings)](https://www.npmjs.com/package/@mmomtchev/react-native-settings) [![test-dev](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml/badge.svg)](https://github.com/mmomtchev/react-native-settings/actions/workflows/test-dev.yml) [![codecov](https://codecov.io/gh/mmomtchev/react-native-settings/branch/main/graph/badge.svg?token=EQ2TWCZAS4)](https://codecov.io/gh/mmomtchev/react-native-settings)
 
 **React Native Universal Settings Screen With Async Support & Spinner**
 
@@ -105,12 +105,12 @@ export default function Settings() {
 
 ### Table of Contents
 
-*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
-*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
-*   [ReactNativeSettings](#reactnativesettings)
-    *   [Parameters](#parameters)
-*   [settings](#settings)
-*   [styles](#styles)
+-   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+-   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+-   [ReactNativeSettings](#reactnativesettings)
+    -   [Parameters](#parameters)
+-   [settings](#settings)
+-   [styles](#styles)
 
 ## ReactNativeSettingsGetter
 
@@ -132,11 +132,11 @@ Type: function (v: T): ([boolean](https://developer.mozilla.org/docs/Web/JavaScr
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
+Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
 
 ### Parameters
 
-*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}** 
+-   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}**
 
 ## settings
 
