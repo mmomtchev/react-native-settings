@@ -150,4 +150,4 @@ export default function Settings() {
     );
 }
 
-ReactDOM.render(<Settings />, document.getElementById('root'));
+ReactDOM.render(<Settings />, window.document.getElementById('root'));

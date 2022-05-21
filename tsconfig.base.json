@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "outDir": ".",
+        "declaration": true,
+        "declarationMap": true,
+        "removeComments": true,
+        "jsx": "react",
+        "allowJs": true,
+        "baseUrl": "./",
+        "strict": true,
+        "paths": {
+            "@mmomtchev/react-native-settings": [
+                "./src"
+            ]
+        }
+    },
+    "include": [
+        "./src"
+    ],
+    "exclude": [
+        "**/*.js",
+        "**/*.cjs"
+    ],
+    "ts-node": {
+        "transpileOnly": true
+    }
+}
