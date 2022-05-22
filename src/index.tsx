@@ -715,7 +715,7 @@ export default function ReactNativeSettings(props: {
         // This transition has a brief grace time to avoid flickering the screen
         // on very fast asynchronous configuration operations
         if (spinning > 0 !== spinnerState.current.state) {
-            if (spinnerState.current.timer) clearTimeout(spinnerState.current.timer);
+            if (spinnerState.current.timer) window.clearTimeout(spinnerState.current.timer);
             spinnerState.current.state = spinning > 0;
 
             // The limit of human perception is about 50ms
@@ -732,7 +732,7 @@ export default function ReactNativeSettings(props: {
             // Cleanup when the component is unmounted
             if (spinnerState.current && spinnerState.current.timer)
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-                clearTimeout(spinnerState.current.timer);
+                window.clearTimeout(spinnerState.current.timer);
         };
     }, [spinnerShown, spinning, props.spinnerGraceTime]);
 
