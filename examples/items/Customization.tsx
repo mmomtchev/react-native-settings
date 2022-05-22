@@ -39,6 +39,7 @@ const settings: SettingsElement[] = [
     },
     {
         label: 'Intelligence',
+        title: 'Select Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],
@@ -46,17 +47,16 @@ const settings: SettingsElement[] = [
         set: confSet.bind(null, '@int')
     },
     {
-        label: 'Wings',
-        type: 'boolean',
-        get: async () => (await confGet('@wings', 'false')) === 'true',
-        set: (v) => confSet('@wings', v.toString()),
         // You can pass your own JSX element to be used as label
-        jsxLabel: (
+        label: (
             <View style={{flex: 1, flexDirection: 'row'}}>
                 <Image style={{width: 60, height: 20, marginRight: 10}} source={{uri: wings}} />
                 <Text>Wings</Text>
             </View>
-        )
+        ),
+        type: 'boolean',
+        get: async () => (await confGet('@wings', 'false')) === 'true',
+        set: (v) => confSet('@wings', v.toString())
     }
 ];
 

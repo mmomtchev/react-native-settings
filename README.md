@@ -69,6 +69,7 @@ const settings: SettingsElement[] = [
     // Choose from a list, uses the standard phone navigation screens
     {
         label: 'Intelligence',
+        title: 'Select Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],
@@ -105,33 +106,33 @@ export default function Settings() {
 
 ### Table of Contents
 
-*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
-*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
-*   [SettingsElementString](#settingselementstring)
-    *   [label](#label)
-    *   [get](#get)
-    *   [set](#set)
-    *   [display](#display)
-*   [label](#label-1)
-*   [get](#get-1)
-*   [set](#set-1)
-*   [display](#display-1)
-*   [label](#label-2)
-*   [get](#get-2)
-*   [set](#set-2)
-*   [display](#display-2)
-*   [title](#title)
-*   [label](#label-3)
-*   [get](#get-3)
-*   [set](#set-3)
-*   [label](#label-4)
-*   [elements](#elements)
-*   [SettingsStyle](#settingsstyle)
-*   [defaultStyles](#defaultstyles)
-*   [ReactNativeSettings](#reactnativesettings)
-    *   [Parameters](#parameters)
-*   [settings](#settings)
-*   [styles](#styles)
+-   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+-   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+-   [SettingsElementString](#settingselementstring)
+    -   [label](#label)
+    -   [get](#get)
+    -   [set](#set)
+    -   [display](#display)
+-   [label](#label-1)
+-   [get](#get-1)
+-   [set](#set-1)
+-   [display](#display-1)
+-   [label](#label-2)
+-   [get](#get-2)
+-   [set](#set-2)
+-   [display](#display-2)
+-   [title](#title)
+-   [label](#label-3)
+-   [get](#get-3)
+-   [set](#set-3)
+-   [label](#label-4)
+-   [elements](#elements)
+-   [SettingsStyle](#settingsstyle)
+-   [defaultStyles](#defaultstyles)
+-   [ReactNativeSettings](#reactnativesettings)
+    -   [Parameters](#parameters)
+-   [settings](#settings)
+-   [styles](#styles)
 
 ## ReactNativeSettingsGetter
 
@@ -322,13 +323,13 @@ Type: [SettingsStyle](#settingsstyle)
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
+Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
 
 ### Parameters
 
-*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?}** 
+-   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?}**
 
-Returns **JSX.Element** 
+Returns **JSX.Element**
 
 ## settings
 

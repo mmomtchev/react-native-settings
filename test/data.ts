@@ -27,6 +27,7 @@ export const settingsSync: [SettingsElementString, SettingsElementEnum, Settings
     },
     {
         label: 'Intelligence',
+        title: 'Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],
@@ -55,6 +56,7 @@ export const settingsAsync: [SettingsElementString, SettingsElementEnum, Setting
     },
     {
         label: 'Intelligence',
+        title: 'Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],

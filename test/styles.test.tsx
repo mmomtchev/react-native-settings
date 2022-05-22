@@ -17,6 +17,7 @@ describe('styles', () => {
         },
         {
             label: 'Intelligence',
+            title: 'Intelligence',
             type: 'enum',
             values: ['A'],
             display: () => 'Alpha',
@@ -100,33 +101,30 @@ describe('styles', () => {
 describe('components', () => {
     const settings: SettingsElement[] = [
         {
-            label: 'Name',
+            label: <Text>_N_A_M_E</Text>,
             type: 'string',
             display: (s) => (s && s.length ? s : 'empty'),
             get: () => '',
-            set: (v) => undefined,
-            jsxLabel: <Text>_N_A_M_E</Text>
+            set: (v) => undefined
         },
         {
-            label: 'Intelligence',
+            label: <Text>1nt3ll1g3nc3</Text>,
+            title: 'Intelligence',
             type: 'enum',
             values: ['A'],
             display: () => 'Alpha',
             get: () => 'A',
-            set: (v) => undefined,
-            jsxLabel: <Text>1nt3ll1g3nc3</Text>
+            set: (v) => undefined
         },
         {
-            label: 'Header',
             type: 'section',
-            jsxLabel: <Text>FEATURES</Text>,
+            label: <Text>FEATURES</Text>,
             elements: [
                 {
-                    label: 'Wings',
+                    label: <Text>wiiings</Text>,
                     type: 'boolean',
                     get: () => true,
-                    set: (v) => undefined,
-                    jsxLabel: <Text>wiiings</Text>
+                    set: (v) => undefined
                 }
             ]
         }

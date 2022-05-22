@@ -40,6 +40,7 @@ const settings: SettingsElement[] = [
     // Choose from a list, uses the standard phone navigation screens
     {
         label: 'Intelligence',
+        title: 'Select Intelligence',
         type: 'enum',
         values: Object.keys(intelligence),
         display: (v: string) => intelligence[v],
