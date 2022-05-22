@@ -711,7 +711,7 @@ export default function ReactNativeSettings(props: {
         state: true
     });
     const [spinnerShown, setSpinnerShown] = React.useState<boolean>(true);
-    const cancelSpinner = () => {
+    const cancelSpinnerTimer = () => {
         if (spinnerState.current.timer) {
             window.clearTimeout(spinnerState.current.timer);
             spinnerState.current.timer = 0;
@@ -722,7 +722,7 @@ export default function ReactNativeSettings(props: {
         // on very fast asynchronous configuration operations
         if (spinning > 0 !== spinnerState.current.state) {
             spinnerState.current.state = spinning > 0;
-            cancelSpinner();
+            cancelSpinnerTimer();
 
             // The limit of human perception is about 50ms
             // Spinning off is immediate
@@ -739,7 +739,7 @@ export default function ReactNativeSettings(props: {
         }
         return () => {
             // Cleanup when the component is unmounted
-            cancelSpinner();
+            cancelSpinnerTimer();
         };
     }, [spinnerShown, spinning, props.spinnerGraceTime]);
 
