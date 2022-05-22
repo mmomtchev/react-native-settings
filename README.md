@@ -106,33 +106,34 @@ export default function Settings() {
 
 ### Table of Contents
 
--   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
--   [ReactNativeSettingsSetter](#reactnativesettingssetter)
--   [SettingsElementString](#settingselementstring)
-    -   [label](#label)
-    -   [get](#get)
-    -   [set](#set)
-    -   [display](#display)
--   [label](#label-1)
--   [get](#get-1)
--   [set](#set-1)
--   [display](#display-1)
--   [label](#label-2)
--   [get](#get-2)
--   [set](#set-2)
--   [display](#display-2)
--   [title](#title)
--   [label](#label-3)
--   [get](#get-3)
--   [set](#set-3)
--   [label](#label-4)
--   [elements](#elements)
--   [SettingsStyle](#settingsstyle)
--   [defaultStyles](#defaultstyles)
--   [ReactNativeSettings](#reactnativesettings)
-    -   [Parameters](#parameters)
--   [settings](#settings)
--   [styles](#styles)
+*   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
+*   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+*   [SettingsElementString](#settingselementstring)
+    *   [label](#label)
+    *   [get](#get)
+    *   [set](#set)
+    *   [display](#display)
+*   [label](#label-1)
+*   [get](#get-1)
+*   [set](#set-1)
+*   [display](#display-1)
+*   [label](#label-2)
+*   [get](#get-2)
+*   [set](#set-2)
+*   [display](#display-2)
+*   [title](#title)
+*   [label](#label-3)
+*   [get](#get-3)
+*   [set](#set-3)
+*   [label](#label-4)
+*   [elements](#elements)
+*   [SettingsStyle](#settingsstyle)
+*   [defaultStyles](#defaultstyles)
+*   [ReactNativeSettings](#reactnativesettings)
+    *   [Parameters](#parameters)
+*   [settings](#settings)
+*   [styles](#styles)
+*   [spinnerGraceTime](#spinnergracetime)
 
 ## ReactNativeSettingsGetter
 
@@ -323,13 +324,13 @@ Type: [SettingsStyle](#settingsstyle)
 
 Configurable Settings Screen for React Native.
 
-Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
+Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> component.
 
 ### Parameters
 
--   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?}**
+*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?, spinnerGraceTime: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)?}** 
 
-Returns **JSX.Element**
+Returns **JSX.Element** 
 
 ## settings
 
@@ -342,6 +343,13 @@ Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 Optional styles overriding the default styles
 
 Type: [SettingsStyle](#settingsstyle)
+
+## spinnerGraceTime
+
+Optional delay in ms before showing the activity indicator.
+Prevents screen flickering when the updates are very fast.
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
 # License
 
