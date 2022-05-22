@@ -107,6 +107,27 @@ export default function Settings() {
 
 *   [ReactNativeSettingsGetter](#reactnativesettingsgetter)
 *   [ReactNativeSettingsSetter](#reactnativesettingssetter)
+*   [SettingsElementString](#settingselementstring)
+    *   [label](#label)
+    *   [get](#get)
+    *   [set](#set)
+    *   [display](#display)
+*   [label](#label-1)
+*   [get](#get-1)
+*   [set](#set-1)
+*   [display](#display-1)
+*   [label](#label-2)
+*   [get](#get-2)
+*   [set](#set-2)
+*   [display](#display-2)
+*   [title](#title)
+*   [label](#label-3)
+*   [get](#get-3)
+*   [set](#set-3)
+*   [label](#label-4)
+*   [elements](#elements)
+*   [SettingsStyle](#settingsstyle)
+*   [defaultStyles](#defaultstyles)
 *   [ReactNativeSettings](#reactnativesettings)
     *   [Parameters](#parameters)
 *   [settings](#settings)
@@ -128,6 +149,175 @@ May synchronously return false to deny the operation.
 
 Type: function (v: T): ([boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | void | [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<void>)
 
+## SettingsElementString
+
+A string element.
+
+`display` can be used to control the value shown - ie a password
+can be reduced to '\*\*\*'.
+
+### label
+
+Label, either a string or a JSX element
+
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | JSX.Element)
+
+### get
+
+Configuration getter, will be called to retrieve the current value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+Type: [ReactNativeSettingsGetter](#reactnativesettingsgetter)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>
+
+### set
+
+Configuration setter, will be called when the user sets a new value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+If it synchronously returns false, the operation will be considered rejected.
+
+Type: [ReactNativeSettingsSetter](#reactnativesettingssetter)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>
+
+### display
+
+Render function.
+
+Can be used for example to always show a password as '\*\*\*'
+or to display a fixed value such as 'Not set' for empty strings
+
+Type: function (v: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)): [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+## label
+
+Label, either a string or a JSX element
+
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | JSX.Element)
+
+## get
+
+Configuration getter, will be called to retrieve the current value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+Type: [ReactNativeSettingsGetter](#reactnativesettingsgetter)<[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>
+
+## set
+
+Configuration setter, will be called when the user sets a new value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+If it synchronously returns false, the operation will be considered rejected.
+
+Type: [ReactNativeSettingsSetter](#reactnativesettingssetter)<[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>
+
+## display
+
+Render function.
+
+Can be used for example to always show a password as '\*\*\*'
+or to display a fixed value such as 'Not set' for empty strings
+
+Type: function (v: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)): [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+## label
+
+Label, either a string or a JSX element
+
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | JSX.Element)
+
+## get
+
+Configuration getter, will be called to retrieve the current value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+Type: [ReactNativeSettingsGetter](#reactnativesettingsgetter)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>
+
+## set
+
+Configuration setter, will be called when the user sets a new value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+If it synchronously returns false, the operation will be considered rejected.
+
+Type: [ReactNativeSettingsSetter](#reactnativesettingssetter)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>
+
+## display
+
+Render function.
+
+Can be used for example to always show a password as '\*\*\*'
+or to display a fixed value such as 'Not set' for empty strings
+
+Type: function (v: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)): [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+## title
+
+Optional title for the selection screen. If it is not provided
+the selection screen won't have a header.
+
+Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+## label
+
+Label, either a string or a JSX element
+
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | JSX.Element)
+
+## get
+
+Configuration getter, will be called to retrieve the current value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+Type: [ReactNativeSettingsGetter](#reactnativesettingsgetter)<[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)>
+
+## set
+
+Configuration setter, will be called when the user sets a new value.
+
+If it returns a Promise, a spinning activity indicator will be shown
+until the Promise resolve. Should not reject.
+
+If it synchronously returns false, the operation will be considered rejected.
+
+Type: [ReactNativeSettingsSetter](#reactnativesettingssetter)<[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)>
+
+## label
+
+Label, either a string or a JSX element
+
+Type: ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | JSX.Element)
+
+## elements
+
+Subelements
+
+Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>
+
+## SettingsStyle
+
+Allows optional overriding of the styles of the elements
+
+The default styles are in `defaultStyles`
+
+## defaultStyles
+
+Default styles
+
+Type: [SettingsStyle](#settingsstyle)
+
 ## ReactNativeSettings
 
 Configurable Settings Screen for React Native.
@@ -136,7 +326,9 @@ Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> co
 
 ### Parameters
 
-*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: SettingsStyle?}** 
+*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?}** 
+
+Returns **JSX.Element** 
 
 ## settings
 
@@ -148,7 +340,7 @@ Type: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 
 Optional styles overriding the default styles
 
-Type: SettingsStyle
+Type: [SettingsStyle](#settingsstyle)
 
 # License
 

@@ -29,47 +29,148 @@ export type ReactNativeSettingsGetter<T> = () => T | Promise<T>;
  */
 export type ReactNativeSettingsSetter<T> = (v: T) => boolean | void | Promise<void>;
 
+/**
+ * A string element.
+ *
+ * `display` can be used to control the value shown - ie a password
+ * can be reduced to '***'.
+ */
 export interface SettingsElementString {
-    label: string;
+    /** Label, either a string or a JSX element */
+    label: string | JSX.Element;
     type: 'string';
+
+    /**
+     * Configuration getter, will be called to retrieve the current value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     */
     get: ReactNativeSettingsGetter<string>;
+
+    /**
+     * Configuration setter, will be called when the user sets a new value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     *
+     * If it synchronously returns false, the operation will be considered rejected.
+     */
     set: ReactNativeSettingsSetter<string>;
+
+    /**
+     * Render function.
+     *
+     * Can be used for example to always show a password as '***'
+     * or to display a fixed value such as 'Not set' for empty strings
+     */
     display?: (v: string) => string;
-    jsxLabel?: JSX.Element;
 }
 
 export interface SettingsElementNumber {
-    label: string;
+    /** Label, either a string or a JSX element */
+    label: string | JSX.Element;
     type: 'number';
+
+    /**
+     * Configuration getter, will be called to retrieve the current value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     */
     get: ReactNativeSettingsGetter<number>;
+
+    /**
+     * Configuration setter, will be called when the user sets a new value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     *
+     * If it synchronously returns false, the operation will be considered rejected.
+     */
     set: ReactNativeSettingsSetter<number>;
+
+    /**
+     * Render function.
+     *
+     * Can be used for example to always show a password as '***'
+     * or to display a fixed value such as 'Not set' for empty strings
+     */
     display?: (v: number) => string;
-    jsxLabel?: JSX.Element;
 }
 
 export interface SettingsElementEnum {
-    label: string;
+    /** Label, either a string or a JSX element */
+    label: string | JSX.Element;
     type: 'enum';
     values: string[];
+
+    /**
+     * Configuration getter, will be called to retrieve the current value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     */
     get: ReactNativeSettingsGetter<string>;
+
+    /**
+     * Configuration setter, will be called when the user sets a new value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     *
+     * If it synchronously returns false, the operation will be considered rejected.
+     */
     set: ReactNativeSettingsSetter<string>;
+
+    /**
+     * Render function.
+     *
+     * Can be used for example to always show a password as '***'
+     * or to display a fixed value such as 'Not set' for empty strings
+     */
     display?: (v: string) => string;
-    jsxLabel?: JSX.Element;
+
+    /**
+     * Optional title for the selection screen. If it is not provided
+     * the selection screen won't have a header.
+     */
+    title?: string;
 }
 
 export interface SettingsElementBoolean {
-    label: string;
+    /** Label, either a string or a JSX element */
+    label: string | JSX.Element;
     type: 'boolean';
+
+    /**
+     * Configuration getter, will be called to retrieve the current value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     */
     get: ReactNativeSettingsGetter<boolean>;
+
+    /**
+     * Configuration setter, will be called when the user sets a new value.
+     *
+     * If it returns a Promise, a spinning activity indicator will be shown
+     * until the Promise resolve. Should not reject.
+     *
+     * If it synchronously returns false, the operation will be considered rejected.
+     */
     set: ReactNativeSettingsSetter<boolean>;
-    jsxLabel?: JSX.Element;
 }
 
 export type SettingsElementSection = {
-    label: string;
+    /** Label, either a string or a JSX element */
+    label: string | JSX.Element;
     type: 'section';
+
+    /**
+     * Subelements
+     */
     elements: SettingsElement[];
-    jsxLabel?: JSX.Element;
 };
 
 export type SettingsElement =
@@ -79,6 +180,11 @@ export type SettingsElement =
     | SettingsElementBoolean
     | SettingsElementSection;
 
+/**
+ * Allows optional overriding of the styles of the elements
+ *
+ * The default styles are in `defaultStyles`
+ */
 export interface SettingsStyle {
     screen?: StyleProp<ViewStyle>;
     list?: StyleProp<ViewStyle>;
@@ -90,7 +196,10 @@ export interface SettingsStyle {
     spinner?: StyleProp<ViewStyle>;
 }
 
-const defaultStyles: SettingsStyle = StyleSheet.create({
+/**
+ * Default styles
+ */
+export const defaultStyles: SettingsStyle = StyleSheet.create({
     screen: {
         flex: 1,
         padding: 5
@@ -202,12 +311,14 @@ function Section(props: {
 
     const jsx = React.useMemo(
         () =>
-            props.element.jsxLabel ?? (
+            typeof props.element.label !== 'string' ? (
+                props.element.label
+            ) : (
                 <View style={styleHeader}>
                     <Text style={styleLabel}>{props.element.label}</Text>
                 </View>
             ),
-        [props.element.jsxLabel, styleLabel, styleHeader, props.element.label]
+        [styleLabel, styleHeader, props.element.label]
     );
 
     return (
@@ -248,8 +359,13 @@ function Boolean(props: {
     );
 
     const jsx = React.useMemo(
-        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
-        [props.element.jsxLabel, styleLabel, props.element.label]
+        () =>
+            typeof props.element.label !== 'string' ? (
+                props.element.label
+            ) : (
+                <Text style={styleLabel}>{props.element.label}</Text>
+            ),
+        [styleLabel, props.element.label]
     );
 
     return (
@@ -336,8 +452,13 @@ function StringNumber(props: {
         [value, props.element.display]
     );
     const jsx = React.useMemo(
-        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
-        [props.element.jsxLabel, styleLabel, props.element.label]
+        () =>
+            typeof props.element.label !== 'string' ? (
+                props.element.label
+            ) : (
+                <Text style={styleLabel}>{props.element.label}</Text>
+            ),
+        [styleLabel, props.element.label]
     );
     const kbType = React.useMemo(
         () => (props.element.type === 'number' ? 'numeric' : undefined),
@@ -424,8 +545,13 @@ function Enum(props: {
         [value, props.element.display]
     );
     const jsx = React.useMemo(
-        () => props.element.jsxLabel ?? <Text style={styleLabel}>{props.element.label}</Text>,
-        [props.element.jsxLabel, styleLabel, props.element.label]
+        () =>
+            typeof props.element.label !== 'string' ? (
+                props.element.label
+            ) : (
+                <Text style={styleLabel}>{props.element.label}</Text>
+            ),
+        [styleLabel, props.element.label]
     );
 
     return (
@@ -526,7 +652,7 @@ const activityStyle: Record<'true' | 'false', StyleProp<ViewStyle>> = {
  * Must be included inside of a <NavigationContainer> or a <_navigation_.Screen> component.
  *
  * @param props
- * @returns
+ * @returns {JSX.Element}
  */
 export default function ReactNativeSettings(props: {
     /**
@@ -627,7 +753,8 @@ export default function ReactNativeSettings(props: {
                         <SettingsStack.Screen
                             name={'ReactNativeSettingsEnum'}
                             options={({route}) => ({
-                                title: EnumValuesIPC[route.params.data].element.label
+                                title: EnumValuesIPC[route.params.data].element.title,
+                                headerShown: !!EnumValuesIPC[route.params.data].element.title
                             })}
                         >
                             {EnumValuesMemo}
