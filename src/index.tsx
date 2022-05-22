@@ -711,28 +711,35 @@ export default function ReactNativeSettings(props: {
         state: true
     });
     const [spinnerShown, setSpinnerShown] = React.useState<boolean>(true);
+    const cancelSpinner = () => {
+        if (spinnerState.current.timer) {
+            window.clearTimeout(spinnerState.current.timer);
+            spinnerState.current.timer = 0;
+        }
+    };
     React.useLayoutEffect(() => {
         // This transition has a brief grace time to avoid flickering the screen
         // on very fast asynchronous configuration operations
         if (spinning > 0 !== spinnerState.current.state) {
-            if (spinnerState.current.timer) window.clearTimeout(spinnerState.current.timer);
             spinnerState.current.state = spinning > 0;
+            cancelSpinner();
 
             // The limit of human perception is about 50ms
-            spinnerState.current.timer = window.setTimeout(
-                () => {
-                    spinnerState.current.timer = 0;
-                    setSpinnerShown(spinning > 0);
-                },
-                // Spinning off is immediate
-                spinning > 0 ? props.spinnerGraceTime ?? 50 : 0
-            );
+            // Spinning off is immediate
+            const timeout = spinning > 0 ? props.spinnerGraceTime ?? 50 : 0;
+
+            const setSpinner = () => {
+                spinnerState.current.timer = 0;
+                setSpinnerShown(spinning > 0);
+            };
+
+            if (timeout > 0) spinnerState.current.timer = window.setTimeout(setSpinner, timeout);
+            // useLayoutEffect allows for synchronous updates
+            else setSpinner();
         }
         return () => {
             // Cleanup when the component is unmounted
-            if (spinnerState.current && spinnerState.current.timer)
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                window.clearTimeout(spinnerState.current.timer);
+            cancelSpinner();
         };
     }, [spinnerShown, spinning, props.spinnerGraceTime]);
 

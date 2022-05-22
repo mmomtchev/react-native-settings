@@ -16,23 +16,26 @@ describe('sync', () => {
     it('render', async () => {
         const r = render(
             <NavigationContainer>
-                <Settings settings={settingsSync} />
+                <Settings settings={settingsSync} spinnerGraceTime={0} />
             </NavigationContainer>
         );
-        await waitForSpinner(r);
+        // This should be fully synchronous
+        expect(r.UNSAFE_queryAllByType(View)[1].props.style.opacity).toBe(1);
+        expect(r.UNSAFE_queryAllByType(View)[1].props.pointerEvents).toBe('auto');
+
         expect(r.getByText('Intelligence')).toBeDefined();
         expect(r.toJSON()).toMatchSnapshot();
 
         const newSettings = [...settingsSync];
         newSettings[1] = {...newSettings[1]};
         newSettings[1].label = 'Dexterity';
+
         r.rerender(
             <NavigationContainer>
-                <Settings settings={newSettings} spinnerGraceTime={0} />
+                <Settings settings={newSettings} />
             </NavigationContainer>
         );
-        expect(r.UNSAFE_queryAllByType(View)[1].props.style.opacity).toBe(1);
-        expect(r.UNSAFE_queryAllByType(View)[1].props.pointerEvents).toBe('auto');
+        await waitForSpinner(r);
         expect(r.getByText('Dexterity'));
         expect(r.toJSON()).toMatchSnapshot();
         r.unmount();

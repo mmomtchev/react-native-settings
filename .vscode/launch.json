@@ -18,11 +18,6 @@
             "program": "node_modules/jest/bin/jest.js",
             "skipFiles": [
                 "<node_internals>/**"
-            ],
-            "args": [
-                "test/sync.test.tsx",
-                "-t",
-                "keyboard"
             ]
         },
     ]
