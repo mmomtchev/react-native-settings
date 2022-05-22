@@ -152,15 +152,13 @@ function then<T>(value: T | Promise<T>, fn: (value: T) => void): void {
     else fn(value);
 }
 
-function reducer<T>(
-    state: T,
-    action: {
-        item: SettingsElement;
-        value: T;
-        initOnly?: boolean;
-        context: SettingContextType;
-    }
-): T {
+type reducerAction<T> = {
+    item: SettingsElement;
+    value: T;
+    initOnly?: boolean;
+    context: SettingContextType;
+};
+function reducer<T>(state: T, action: reducerAction<T>): T {
     if (action.item.type === 'section') throw new Error('Sections cannot be reduced');
     const newState = action.value;
 
@@ -177,8 +175,8 @@ function reducer<T>(
 
     return newState;
 }
-type reducerType<T> = typeof reducer;
-const reducerBool = reducer as reducerType<boolean>;
+// Alas `typeof xxx<T>` is not a supported syntax in TypeScript
+type reducerType<T> = (state: T, action: reducerAction<T>) => T;
 
 type StackParamList = {
     ReactNativeSettingsMain: undefined;
@@ -226,7 +224,7 @@ function Boolean(props: {
     nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
 }) {
     const context = React.useContext(SettingsContext);
-    const [value, dispatch] = React.useReducer(reducerBool, false);
+    const [value, dispatch] = React.useReducer<reducerType<boolean>>(reducer, false);
     React.useEffect(() => {
         context.spinStart();
         then(props.element.get(), (v) => {
@@ -259,7 +257,7 @@ function Boolean(props: {
             <View style={styleItem}>
                 {jsx}
                 <View pointerEvents='none'>
-                    <Switch value={value as boolean} />
+                    <Switch value={value} />
                 </View>
             </View>
         </TouchableOpacity>
@@ -275,7 +273,7 @@ function StringNumber(props: {
 }) {
     const context = React.useContext(SettingsContext);
 
-    const [value, dispatch] = React.useReducer(reducer, []);
+    const [value, dispatch] = React.useReducer<reducerType<string | number>>(reducer, '');
     React.useEffect(() => {
         context.spinStart();
         then(props.element.get(), (v) => {
@@ -380,7 +378,10 @@ function Enum(props: {
     nav: NativeStackScreenProps<StackParamList, 'ReactNativeSettingsMain'>;
 }) {
     const context = React.useContext(SettingsContext);
-    const [value, dispatch] = React.useReducer(reducer, props.element.values[0]);
+    const [value, dispatch] = React.useReducer<reducerType<string>>(
+        reducer,
+        props.element.values[0]
+    );
 
     React.useEffect(() => {
         context.spinStart();
@@ -419,7 +420,7 @@ function Enum(props: {
         [props.styles?.label]
     );
     const display = React.useMemo(
-        () => (props.element.display || ((i) => i))(value as string),
+        () => (props.element.display || ((i) => i))(value),
         [value, props.element.display]
     );
     const jsx = React.useMemo(
