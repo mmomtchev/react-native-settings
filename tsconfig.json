@@ -2,8 +2,7 @@
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
         "module": "ESNext",
-        "target": "ES2015",
-        "removeComments": false
+        "target": "ES2015"
     },
     "include": [
         "./src"
