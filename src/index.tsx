@@ -664,6 +664,13 @@ export default function ReactNativeSettings(props: {
      * Optional styles overriding the default styles
      */
     styles?: SettingsStyle;
+
+    /**
+     * Optional delay in ms before showing the activity indicator.
+     * Prevents screen flickering when the updates are very fast.
+     * @default 50
+     */
+    spinnerGraceTime?: number;
 }) {
     const [spinning, setSpinning] = React.useState<number>(0);
 
@@ -718,7 +725,7 @@ export default function ReactNativeSettings(props: {
                     setSpinnerShown(spinning > 0);
                 },
                 // Spinning off is immediate
-                spinning > 0 ? 50 : 0
+                spinning > 0 ? props.spinnerGraceTime ?? 50 : 0
             );
         }
         return () => {
@@ -727,7 +734,7 @@ export default function ReactNativeSettings(props: {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
                 clearTimeout(spinnerState.current.timer);
         };
-    });
+    }, [spinnerShown, spinning, props.spinnerGraceTime]);
 
     return (
         <View style={styleScreen}>

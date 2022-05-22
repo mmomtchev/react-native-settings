@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [1.0.3] 2022-05-22
 
+-   Render the spinner grace time configurable
 -   Fold `jsxLabel` into `label` and add a separate screen title for `SettingsElementEnum`
 -   Add a CJS export transpiled to ES5 (ES2009)
 -   Transpile the ES6 module to ES6 (ES2015)

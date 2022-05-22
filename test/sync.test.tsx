@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Keyboard, Switch, TextInput} from 'react-native';
+import {Keyboard, Switch, TextInput, View} from 'react-native';
 import {act, fireEvent, render} from '@testing-library/react-native';
 
 import Settings from '@mmomtchev/react-native-settings';
@@ -28,10 +28,11 @@ describe('sync', () => {
         newSettings[1].label = 'Dexterity';
         r.rerender(
             <NavigationContainer>
-                <Settings settings={newSettings} />
+                <Settings settings={newSettings} spinnerGraceTime={0} />
             </NavigationContainer>
         );
-        await waitForSpinner(r);
+        expect(r.UNSAFE_queryAllByType(View)[1].props.style.opacity).toBe(1);
+        expect(r.UNSAFE_queryAllByType(View)[1].props.pointerEvents).toBe('auto');
         expect(r.getByText('Dexterity'));
         expect(r.toJSON()).toMatchSnapshot();
         r.unmount();
