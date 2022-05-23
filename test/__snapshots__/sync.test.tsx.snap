@@ -2496,34 +2496,34 @@ exports[`sync set an enum element 1`] = `
           >
             <View>
               <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
+                    "opacity": 1,
                   }
                 }
               >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     Object {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
@@ -2533,34 +2533,34 @@ exports[`sync set an enum element 1`] = `
                 </View>
               </View>
               <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
+                    "opacity": 1,
                   }
                 }
               >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     Object {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >
@@ -2570,34 +2570,34 @@ exports[`sync set an enum element 1`] = `
                 </View>
               </View>
               <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "center",
-                    "borderBottomWidth": 2,
-                    "borderColor": "#c8c7cc",
-                    "flexDirection": "row",
-                    "fontFamily": "sans-serif",
-                    "height": 40,
-                    "justifyContent": "space-between",
-                    "paddingEnd": 10,
-                    "paddingStart": 10,
+                    "opacity": 1,
                   }
                 }
               >
                 <View
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
                     Object {
-                      "opacity": 1,
+                      "alignItems": "center",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#c8c7cc",
+                      "flexDirection": "row",
+                      "fontFamily": "sans-serif",
+                      "height": 40,
+                      "justifyContent": "space-between",
+                      "paddingEnd": 10,
+                      "paddingStart": 10,
                     }
                   }
                 >

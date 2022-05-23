@@ -625,11 +625,11 @@ function EnumValues(props: {
     return (
         <View>
             {props.element.values.map((val, i) => (
-                <View key={i} style={props.styles?.item ?? defaultStyles.item}>
-                    <TouchableOpacity onPress={() => props.onChange(val)}>
+                <TouchableOpacity key={i} onPress={() => props.onChange(val)}>
+                    <View style={props.styles?.item ?? defaultStyles.item}>
                         <Text>{display(val)}</Text>
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
             ))}
         </View>
     );
