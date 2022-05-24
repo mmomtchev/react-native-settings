@@ -70,7 +70,7 @@
         }
     ],
     "ignorePatterns": [
-        "webpack.config.cjs",
+        "*.cjs",
         "jest.config.js"
     ]
 }
