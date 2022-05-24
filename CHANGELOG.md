@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [1.0.4]
 
 -   Render clickable the full width of the row on enum selection screen
+-   Try to remove all constructs that may require transpilation from the export
 
 ### [1.0.3] 2022-05-22
 
