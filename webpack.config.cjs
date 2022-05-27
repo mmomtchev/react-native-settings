@@ -2,8 +2,12 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const exec = require('child_process');
 
 const list = fs.readdirSync(path.resolve(__dirname, 'examples', 'items'));
+
+const buildGitHash = exec.execSync('git rev-parse --short HEAD').toString().trimEnd();
+const buildDate = exec.execSync('date -u +"%Y-%m-%d"').toString().trimEnd();
 
 const examples = {};
 for (const ex of list.map((file) => ({file, name: path.parse(file).name})))
@@ -69,7 +73,9 @@ module.exports = {
             inject: false
         }),
         new webpack.DefinePlugin({
-            VERSION: JSON.stringify(require('./package.json').version)
+            VERSION: JSON.stringify(require('./package.json').version),
+            __BUILD_GITHASH__: JSON.stringify(buildGitHash),
+            __BUILD_DATE__: JSON.stringify(buildDate)
         }),
         ...Object.keys(examples).map(
             (ex) =>

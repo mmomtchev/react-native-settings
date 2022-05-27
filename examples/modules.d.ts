@@ -11,3 +11,5 @@ declare module '*.json' {
 }
 
 declare const VERSION: string;
+declare const __BUILD_GITHASH__: string;
+declare const __BUILD_DATE__: string;

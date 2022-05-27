@@ -56,6 +56,25 @@ const settings: SettingsElement[] = [
         type: 'boolean',
         get: async () => (await confGet('@wings', 'false')) === 'true',
         set: (v) => confSet('@wings', v.toString())
+    },
+    // Info section
+    {
+        // These come from webpack.config.cjs
+        label: (
+            <Text
+                style={{
+                    fontSize: 10,
+                    fontStyle: 'italic',
+                    marginTop: 10,
+                    textAlign: 'right',
+                    marginEnd: 20
+                }}
+            >
+                {VERSION}: build {__BUILD_GITHASH__} from {__BUILD_DATE__}
+            </Text>
+        ),
+        type: 'section',
+        elements: []
     }
 ];
 
