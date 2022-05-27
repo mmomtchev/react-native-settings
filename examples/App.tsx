@@ -67,7 +67,7 @@ const App = (): JSX.Element => {
                                 path={`/${e}`}
                                 element={
                                     <div className='d-flex fex-row'>
-                                        <div>
+                                        <div className='w-100'>
                                             <React.Suspense fallback={<div>Parsing code...</div>}>
                                                 <CodeBlock
                                                     title={examples[e].title}
