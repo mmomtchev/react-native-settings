@@ -767,7 +767,8 @@ export default function ReactNativeSettings(props: {
                             name={'ReactNativeSettingsEnum'}
                             options={({route}) => ({
                                 title: EnumValuesIPC[route.params.data].element.title,
-                                headerShown: !!EnumValuesIPC[route.params.data].element.title
+                                headerShown: !!EnumValuesIPC[route.params.data].element.title,
+                                headerBackTitleVisible: false
                             })}
                         >
                             {EnumValuesMemo}
