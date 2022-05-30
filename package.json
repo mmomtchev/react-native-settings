@@ -1,6 +1,6 @@
 {
   "name": "@mmomtchev/react-native-settings",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Native Universal Settings Screen",
   "main": "dist/index.js",
   "module": "index.js",
