@@ -216,7 +216,6 @@ export const defaultStyles: SettingsStyle = StyleSheet.create({
         paddingEnd: 10
     },
     item: {
-        fontFamily: 'sans-serif',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
