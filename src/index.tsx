@@ -133,7 +133,7 @@ export interface SettingsElementEnum {
 
     /**
      * Optional title for the selection screen. If it is not provided
-     * the selection screen won't have a header.
+     * the selection screen won't have a header and won't have a back button.
      */
     title?: string;
 }
