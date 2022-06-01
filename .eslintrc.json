@@ -71,6 +71,6 @@
     ],
     "ignorePatterns": [
         "*.cjs",
-        "jest.config.js"
+        "jest.config.mjs"
     ]
 }

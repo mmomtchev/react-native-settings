@@ -12,7 +12,6 @@ const Snack = React.memo(function _Snack(props: {title: string; text: Promise<st
     const dependencies =
         'react-dom,@react-navigation/native@6.0,@react-native-async-storage/async-storage,' +
         '@types/react,@react-navigation/native-stack,react-native-safe-area-context,react-native-screens,' +
-        '@ababel/runtime,' +
         `@mmomtchev/react-native-settings@${VERSION}`;
     const description = `@mmomtchev/react-native-settings ${props.title} Example`;
 
