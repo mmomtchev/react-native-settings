@@ -266,7 +266,7 @@ Type: function (v: [string](https://developer.mozilla.org/docs/Web/JavaScript/Re
 ## title
 
 Optional title for the selection screen. If it is not provided
-the selection screen won't have a header.
+the selection screen won't have a header and won't have a back button.
 
 Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
 
