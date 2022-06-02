@@ -6,7 +6,7 @@ import 'prism-themes/themes/prism-vsc-dark-plus.css';
 const CodeBlock = React.memo(function _CodeBlock(props: {
     title: string;
     code: Promise<string>;
-    text: Promise<string>;
+    file: string;
 }) {
     const [code, setCode] = React.useState('loading()');
     React.useEffect(() => {
@@ -15,7 +15,7 @@ const CodeBlock = React.memo(function _CodeBlock(props: {
     return (
         <div className='position-relative'>
             <div className='position-absolute' style={{right: '1rem'}}>
-                <Snack title={props.title} text={props.text} />
+                <Snack title={props.title} file={props.file} />
             </div>
             <div className='codeblock'>
                 <pre className='p-2' style={{backgroundColor: 'rgb(43, 43, 43)', fontSize: '16px'}}>

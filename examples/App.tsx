@@ -25,9 +25,6 @@ for (const ex of Object.keys(examples)) {
     examples[ex].code = import(
         /* webpackPrefetch: true */ `!!html-loader?{"minimize":false}!./jsx-loader.cjs!./items/${examples[ex].file}.tsx`
     ).then((code) => code.default as string);
-    examples[ex].text = import(
-        /* webpackPrefetch: true */ `!!raw-loader!./items/${examples[ex].file}.tsx`
-    ).then((code) => code.default as string);
 }
 
 const LeftMenuItem = (props: {id: string; title: string}): JSX.Element => (
@@ -72,7 +69,7 @@ const App = (): JSX.Element => {
                                                 <CodeBlock
                                                     title={examples[e].title}
                                                     code={examples[e].code!}
-                                                    text={examples[e].text!}
+                                                    file={examples[e].file!}
                                                 />
                                             </React.Suspense>
                                         </div>
