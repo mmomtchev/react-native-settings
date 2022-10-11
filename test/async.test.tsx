@@ -110,4 +110,13 @@ describe('async', () => {
         expect(newSettings[2].set).toBeCalledWith(true);
         r.unmount();
     });
+
+    it('unmount while waiting', async () => {
+        const r = render(
+            <NavigationContainer>
+                <Settings settings={settingsAsync} />
+            </NavigationContainer>
+        );
+        r.unmount();
+    });
 });
