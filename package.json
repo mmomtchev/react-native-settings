@@ -87,7 +87,7 @@
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
     "react-native-web": "^0.17.7",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.8.1",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
