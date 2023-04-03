@@ -60,7 +60,7 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-react-native-web": "^0.18.12",
     "bootstrap": "^5.2.3",
-    "css-loader": "^6.7.1",
+    "css-loader": "^6.7.3",
     "documentation": "^14.0.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.5.0",
