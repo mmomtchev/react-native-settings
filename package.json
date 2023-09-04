@@ -10,6 +10,7 @@
     "build:lib": "tsc && tsc -p tsconfig.cjs.json",
     "build:examples": "webpack --mode=production",
     "build:doc": "documentation readme src/*.tsx --parse-extension=tsx --require-extension=tsx --section=API",
+    "prepare": "npm run build:lib",
     "publish:examples": "node publish-ghpages.cjs",
     "clean": "tsc --build --clean && rimraf docs dist",
     "eslint": "eslint src/*.ts* examples/*.ts*",
