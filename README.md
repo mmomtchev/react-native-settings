@@ -328,9 +328,9 @@ Must be included inside of a <NavigationContainer> or a <*navigation*.Screen> co
 
 ### Parameters
 
-*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?, spinnerGraceTime: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)?}** 
+*   `props` **{settings: [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<SettingsElement>, styles: [SettingsStyle](#settingsstyle)?, spinnerGraceTime: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)?}**&#x20;
 
-Returns **JSX.Element** 
+Returns **JSX.Element**&#x20;
 
 ## settings
 
